@@ -10,6 +10,6 @@
 	</settings>
 	<typeAliases>
 		<!-- 配置实体及别名 -->
-		<typeAlias type="com.spring.ccliu.entity.User" alias="user"/>
+		<typeAlias type="com.energy.weixin.entity.User" alias="user"/>
 	</typeAliases>
 </configuration>

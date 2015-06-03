@@ -1,4 +1,4 @@
-package com.energy.weixin.ccliu.entity;
+package com.energy.weixin.entity;
 
 import java.io.Serializable;
 

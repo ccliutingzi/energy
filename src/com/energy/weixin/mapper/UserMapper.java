@@ -2,7 +2,7 @@ package com.energy.weixin.mapper;
 
 import java.util.List;
 
-import com.energy.weixin.ccliu.entity.User;
+import com.energy.weixin.entity.User;
 
 public interface UserMapper {
 

@@ -37,7 +37,7 @@
 
     <!-- 配置mappers扫描路径 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.spring.ccliu.mapper" />
+        <property name="basePackage" value="com.energy.weixin.mapper" />
     </bean>
     
 </beans>
