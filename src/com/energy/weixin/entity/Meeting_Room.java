@@ -2,13 +2,51 @@ package com.energy.weixin.entity;
 
 import java.io.Serializable;
 
+/** 
+ * @ClassName: Meeting_Room 
+ * @Description: 会议室类
+ * @author CCLIU 
+ * @date 2015-6-11 上午11:05:22 
+ * v1.0
+ */
 public class Meeting_Room implements Serializable {
 
-	private static final long serialVersionUID = 3647233284813657927L;
-
+	private static final long serialVersionUID = -5622995574281939282L;
+	
+	/*
+	 * ID
+	 */
 	private String id;
-	private String userName;
-	private String password;
+	/*
+	 * 所属楼栋/楼层ID
+	 */
+	private String buildingId;
+	/*
+	 * 会议室名称
+	 */
+	private String roomName;
+	/*
+	 * 容纳人数
+	 */
+	private int capacity;
+	/*
+	 * 设备情况
+	 */
+	private String equipment;
+	
+	public Meeting_Room() {
+		super();
+	}
+
+	public Meeting_Room(String id, String buildingId, String roomName,
+			int capacity, String equipment) {
+		super();
+		this.id = id;
+		this.buildingId = buildingId;
+		this.roomName = roomName;
+		this.capacity = capacity;
+		this.equipment = equipment;
+	}
 
 	public String getId() {
 		return id;
@@ -18,20 +56,36 @@ public class Meeting_Room implements Serializable {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getBuildingId() {
+		return buildingId;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setBuildingId(String buildingId) {
+		this.buildingId = buildingId;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getRoomName() {
+		return roomName;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public String getEquipment() {
+		return equipment;
+	}
+
+	public void setEquipment(String equipment) {
+		this.equipment = equipment;
 	}
 
 }

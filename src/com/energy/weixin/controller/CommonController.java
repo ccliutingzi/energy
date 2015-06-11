@@ -6,13 +6,24 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.energy.weixin.entity.Absent;
 import com.energy.weixin.mapper.UserMapper;
 
+/** 
+ * @ClassName: CommonController 
+ * @Description: 通用相关请求处理器
+ * @author CCLIU 
+ * @date 2015-6-11 上午11:05:22 
+ * v1.0
+ */
 @Controller
 @RequestMapping(value = "/weixin")
-public class TestController {
+public class CommonController {
 
 	private UserMapper userMapper = null;
+	
+	@Autowired
+	private Absent absent;
 
 	@Autowired
 	public void setMapper(UserMapper userMapper) {

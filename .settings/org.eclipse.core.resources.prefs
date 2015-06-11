@@ -1,2 +1,8 @@
 eclipse.preferences.version=1
-encoding//src/com/energy/weixin/controller/MyController.java=UTF-8
+encoding//src/com/energy/weixin/controller/AbsentController.java=UTF-8
+encoding//src/com/energy/weixin/controller/ApprovalController.java=UTF-8
+encoding//src/com/energy/weixin/controller/CommonController.java=UTF-8
+encoding//src/com/energy/weixin/controller/ExpenseController.java=UTF-8
+encoding//src/com/energy/weixin/controller/MeetingController.java=UTF-8
+encoding//src/com/energy/weixin/controller/ProgramController.java=UTF-8
+encoding//src/com/energy/weixin/controller/SignController.java=UTF-8

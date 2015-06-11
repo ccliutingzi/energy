@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.energy.weixin.mapper.UserMapper;
 
+/** 
+ * @ClassName: ProgramController 
+ * @Description: 项目管理相关请求处理器
+ * @author CCLIU 
+ * @date 2015-6-11 上午11:05:22 
+ * v1.0
+ */
 @Controller
 @RequestMapping(value = "/weixin")
 public class ProgramController {

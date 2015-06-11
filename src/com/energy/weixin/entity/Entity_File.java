@@ -2,36 +2,50 @@ package com.energy.weixin.entity;
 
 import java.io.Serializable;
 
+/** 
+ * @ClassName: Entity_File 
+ * @Description: 实体-文件对应类
+ * @author CCLIU 
+ * @date 2015-6-11 上午11:05:22 
+ * v1.0
+ */
 public class Entity_File implements Serializable {
 
-	private static final long serialVersionUID = 3647233284813657927L;
-
-	private String id;
-	private String userName;
-	private String password;
-
-	public String getId() {
-		return id;
+	private static final long serialVersionUID = -2347687637404299888L;
+	
+	/*
+	 * 实体ID
+	 */
+	private String entityId;
+	/*
+	 * 文件ID
+	 */
+	private String fileId;
+	
+	public Entity_File() {
+		super();
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public Entity_File(String entityId, String fileId) {
+		super();
+		this.entityId = entityId;
+		this.fileId = fileId;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getEntityId() {
+		return entityId;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEntityId(String entityId) {
+		this.entityId = entityId;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getFileId() {
+		return fileId;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setFileId(String fileId) {
+		this.fileId = fileId;
 	}
 
 }

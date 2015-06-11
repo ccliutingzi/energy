@@ -3,8 +3,12 @@ package com.energy.weixin.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 请假类
+/** 
+ * @ClassName: Absent 
+ * @Description: 请假类
+ * @author CCLIU 
+ * @date 2015-6-11 上午11:05:22 
+ * v1.0
  */
 public class Absent implements Serializable {
 
@@ -23,7 +27,7 @@ public class Absent implements Serializable {
 	 */
 	private String userName;
 	/*
-	 * 请假事由
+	 * 请假事由，取值范围：事假、病假、丧假、产假、特殊休假、其他
 	 */
 	private String reason;
 	/*
@@ -47,12 +51,28 @@ public class Absent implements Serializable {
 	 */
 	private Date createTime;
 	/*
-	 * 当前状态
+	 * 当前状态，0-待审核，1-审核中，2-已审核
 	 */
 	private char status;
 	
 	public Absent(){}
 	
+	public Absent(String id, String userId, String userName, String reason,
+			String position, String department, Date beginTime, Date endTime,
+			Date createTime, char status) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.userName = userName;
+		this.reason = reason;
+		this.position = position;
+		this.department = department;
+		this.beginTime = beginTime;
+		this.endTime = endTime;
+		this.createTime = createTime;
+		this.status = status;
+	}
+
 	public String getId() {
 		return id;
 	}
