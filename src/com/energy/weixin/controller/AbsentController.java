@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.energy.weixin.mapper.UserMapper;
 
 @Controller
-@RequestMapping(value = "/ccliu")
-public class MyController {
+@RequestMapping(value = "/weixin")
+public class AbsentController {
 
 	private UserMapper userMapper = null;
 
