@@ -6,7 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.energy.weixin.mapper.UserMapper;
+import com.energy.weixin.mapper.ApprovalMapper;
 
 /** 
  * @ClassName: ApprovalController 
@@ -16,26 +16,21 @@ import com.energy.weixin.mapper.UserMapper;
  * v1.0
  */
 @Controller
-@RequestMapping(value = "/weixin")
+@RequestMapping(value = "/approval")
 public class ApprovalController {
 
-	private UserMapper userMapper = null;
-
 	@Autowired
-	public void setMapper(UserMapper userMapper) {
-		this.userMapper = userMapper;
-	}
-	
+	private ApprovalMapper approvalMapper;
+
 	@RequestMapping(method = RequestMethod.GET)
-	public String showForm(ModelMap model) {
-		String name = userMapper.getAllUser().get(0).getUserName();
-		model.addAttribute("myparam", name);
+	public String page1(ModelMap model) {
+		model.addAttribute("", "");
 		return "hello";
 	}
 	
 	@RequestMapping(value = "mypage",method = RequestMethod.GET)
-	public String myPage(ModelMap model) {
-		model.addAttribute("myparam", "1111");
+	public String page2(ModelMap model) {
+		model.addAttribute("myparam", "1");
 		return "mypage";
 	}
 

@@ -10,6 +10,17 @@
 	</settings>
 	<typeAliases>
 		<!-- 配置实体及别名 -->
-		<typeAlias type="com.energy.weixin.entity.User" alias="user"/>
+		<typeAlias type="com.energy.weixin.entity.Absent" alias="Absent"/>
+		<typeAlias type="com.energy.weixin.entity.Approval" alias="Approval"/>
+		<typeAlias type="com.energy.weixin.entity.Entity_Account" alias="Entity_Account"/>
+		<typeAlias type="com.energy.weixin.entity.Entity_File" alias="Entity_File"/>
+		<typeAlias type="com.energy.weixin.entity.Entity_Progress" alias="Entity_Progress"/>
+		<typeAlias type="com.energy.weixin.entity.Expense" alias="Expense"/>
+		<typeAlias type="com.energy.weixin.entity.File" alias="File"/>
+		<typeAlias type="com.energy.weixin.entity.Meeting_Building" alias="Meeting_Building"/>
+		<typeAlias type="com.energy.weixin.entity.Meeting_Room" alias="Meeting_Room"/>
+		<typeAlias type="com.energy.weixin.entity.Meeting" alias="Meeting"/>
+		<typeAlias type="com.energy.weixin.entity.Sign_User" alias="Sign_User"/>
+		<typeAlias type="com.energy.weixin.entity.Sign" alias="Sign"/>
 	</typeAliases>
 </configuration>
