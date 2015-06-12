@@ -2,18 +2,18 @@ package com.energy.weixin.mapper;
 
 import java.util.List;
 
-import com.energy.weixin.entity.User;
+import com.energy.weixin.entity.Sign;
 
 public interface SignMapper {
 
-	public void addUser(User user);
+	public void addSign(Sign sign);
 
-	public List<User> getAllUser();
+	public List<Sign> getAllSign();
 
-	public User getUserById(String id);
+	public Sign getSignById(String id);
 
 	public void deleteById(String id);
 
-	public void update(User user);
+	public void update(Sign sign);
 
 }

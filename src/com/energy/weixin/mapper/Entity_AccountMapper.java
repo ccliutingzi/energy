@@ -2,18 +2,18 @@ package com.energy.weixin.mapper;
 
 import java.util.List;
 
-import com.energy.weixin.entity.User;
+import com.energy.weixin.entity.Entity_Account;
 
 public interface Entity_AccountMapper {
 
-	public void addUser(User user);
+	public void addEntity_Account(Entity_Account entity_Account);
 
-	public List<User> getAllUser();
+	public List<Entity_Account> getAllEntity_Account();
 
-	public User getUserById(String id);
+	public Entity_Account getEntity_AccountById(String id);
 
 	public void deleteById(String id);
 
-	public void update(User user);
+	public void update(Entity_Account entity_Account);
 
 }
