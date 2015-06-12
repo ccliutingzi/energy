@@ -2,42 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.energy.weixin.mapper.UserMapper">
+<mapper namespace="com.energy.weixin.mapper.FileMapper">
 
-	<resultMap id="result" type="user">
-		<result property="id" column="id" />
-		<result property="userName" column="userName" />
-		<result property="password" column="password" />
+	<resultMap id="result" type="File">
+		<result property="id" column="ID" />
+		<result property="fileName" column="FileName" />
+		<result property="filePath" column="FilePath" />
+		<result property="zoomPath" column="ZoomPath" />
 	</resultMap>
 
-	<insert id="addUser" parameterType="user">
-		INSERT INTO user_table
-		(id,username,password)
-		VALUE (#{id},#{userName},#{password})
+	<insert id="addFile" parameterType="File">
+		INSERT INTO file_table
+		(ID,FileName,FilePath,ZoomPath)
+		VALUES (#{id},#{fileName},#{filePath},#{zoomPath})
 	</insert>
 
-
-	<select id="getAllUser" resultMap="result">
-		SELECT id,username,password
-		FROM user_table;
+	<select id="getAllFile" resultMap="result">
+		SELECT * FROM file_table;
 	</select>
 
-	<select id="getUserById" parameterType="String" resultMap="result">
-		SELECT id, username,password
-		FROM user_table where id = #{id};
+	<select id="getFileById" parameterType="String" resultMap="result">
+		SELECT * FROM file_table WHERE ID = #{id};
 	</select>
 
 	<delete id="deleteById" parameterType="string">
-		DELETE FROM
-		user_table
-		WHERE ID = #{id}
+		DELETE FROM file_table WHERE ID = #{id}
 	</delete>
 
-	<update id="update" parameterType="user">
-		UPDATE user_table
+	<update id="update" parameterType="File">
+		UPDATE file_table
 		<set>
-			<if test="userName != null ">userName = #{userName},</if>
-			<if test="password != null ">password = #{password}</if>
+			<if test="fileName != null ">FileName = #{fileName},</if>
+			<if test="filePath != null ">FilePath = #{filePath},</if>
+			<if test="zoomPath != null ">ZoomPath = #{zoomPath}</if>
 		</set>
 		WHERE ID = #{id}
 	</update>

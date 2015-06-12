@@ -30,7 +30,7 @@
 	</select>
 
 	<select id="getAbsentById" parameterType="String" resultMap="result">
-		SELECT * FROM absent_table where ID = #{id};
+		SELECT * FROM absent_table WHERE ID = #{id};
 	</select>
 
 	<delete id="deleteById" parameterType="string">

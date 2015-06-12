@@ -2,42 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.energy.weixin.mapper.UserMapper">
+<mapper namespace="com.energy.weixin.mapper.Meeting_RoomMapper">
 
-	<resultMap id="result" type="user">
-		<result property="id" column="id" />
-		<result property="userName" column="userName" />
-		<result property="password" column="password" />
+	<resultMap id="result" type="Meeting_Room">
+		<result property="id" column="ID" />
+		<result property="buildingId" column="BuildingID" />
+		<result property="roomName" column="RoomName" />
+		<result property="capacity" column="Capacity" />
+		<result property="equipment" column="Equipment" />
 	</resultMap>
 
-	<insert id="addUser" parameterType="user">
-		INSERT INTO user_table
-		(id,username,password)
-		VALUE (#{id},#{userName},#{password})
+	<insert id="addMeeting_Room" parameterType="Meeting_Room">
+		INSERT INTO meeting_room_table
+		(ID,BuildingID,RoomName,Capacity,Equipment)
+		VALUES (#{id},#{buildingId},#{roomName},#{capacity},#{equipment})
 	</insert>
 
-
-	<select id="getAllUser" resultMap="result">
-		SELECT id,username,password
-		FROM user_table;
+	<select id="getAllMeeting_Room" resultMap="result">
+		SELECT * FROM meeting_room_table;
 	</select>
 
-	<select id="getUserById" parameterType="String" resultMap="result">
-		SELECT id, username,password
-		FROM user_table where id = #{id};
+	<select id="getMeeting_RoomById" parameterType="String" resultMap="result">
+		SELECT * FROM meeting_room_table WHERE ID = #{id};
 	</select>
 
 	<delete id="deleteById" parameterType="string">
-		DELETE FROM
-		user_table
-		WHERE ID = #{id}
+		DELETE FROM meeting_room_table WHERE ID = #{id}
 	</delete>
 
-	<update id="update" parameterType="user">
-		UPDATE user_table
+	<update id="update" parameterType="Meeting_Room">
+		UPDATE meeting_room_table
 		<set>
-			<if test="userName != null ">userName = #{userName},</if>
-			<if test="password != null ">password = #{password}</if>
+			<if test="buildingId != null ">BuildingID = #{buildingId}</if>
+			<if test="roomName != null ">RoomName = #{roomName}</if>
+			<if test="capacity != null ">Capacity = #{capacity}</if>
+			<if test="equipment != null ">Equipment = #{equipment}</if>
 		</set>
 		WHERE ID = #{id}
 	</update>

@@ -2,44 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.energy.weixin.mapper.UserMapper">
+<mapper namespace="com.energy.weixin.mapper.Entity_ProgressMapper">
 
-	<resultMap id="result" type="user">
-		<result property="id" column="id" />
-		<result property="userName" column="userName" />
-		<result property="password" column="password" />
+	<resultMap id="result" type="Entity_Progress">
+		<result property="entityId" column="EntityID" />
+		<result property="content" column="Content" />
 	</resultMap>
 
-	<insert id="addUser" parameterType="user">
-		INSERT INTO user_table
-		(id,username,password)
-		VALUE (#{id},#{userName},#{password})
+	<insert id="addEntity_Progress" parameterType="Entity_Progress">
+		INSERT INTO entity_progress_table
+		(EntityID,Content) VALUES (#{entityId},#{content})
 	</insert>
 
-
-	<select id="getAllUser" resultMap="result">
-		SELECT id,username,password
-		FROM user_table;
+	<select id="getAllEntity_Progress" resultMap="result">
+		SELECT * FROM entity_progress_table;
 	</select>
 
-	<select id="getUserById" parameterType="String" resultMap="result">
-		SELECT id, username,password
-		FROM user_table where id = #{id};
+	<select id="getEntity_ProgressById" parameterType="String" resultMap="result">
+		SELECT * FROM entity_progress_table WHERE EntityID = #{entityId};
 	</select>
 
 	<delete id="deleteById" parameterType="string">
-		DELETE FROM
-		user_table
-		WHERE ID = #{id}
+		DELETE FROM entity_progress_table WHERE EntityID = #{entityId};
 	</delete>
 
-	<update id="update" parameterType="user">
-		UPDATE user_table
+	<update id="update" parameterType="Entity_Progress">
+		UPDATE entity_progress_table
 		<set>
-			<if test="userName != null ">userName = #{userName},</if>
-			<if test="password != null ">password = #{password}</if>
+			<if test="entityId != null ">EntityID = #{entityId},</if>
+			<if test="content != null ">Content = #{content}</if>
 		</set>
-		WHERE ID = #{id}
+		WHERE EntityID = #{entityId}
 	</update>
 
 </mapper>

@@ -31,7 +31,7 @@
 	</select>
 
 	<select id="getApprovalById" parameterType="String" resultMap="result">
-		SELECT * FROM approval_table where ID = #{id};
+		SELECT * FROM approval_table WHERE ID = #{id};
 	</select>
 
 	<delete id="deleteById" parameterType="string">
