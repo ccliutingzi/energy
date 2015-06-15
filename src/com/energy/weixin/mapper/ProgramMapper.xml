@@ -9,5 +9,11 @@
 		<result property="userId" column="UserID" />
 		<result property="userName" column="UserName" />
 	</resultMap>
+	
+	<insert id="addProgram" parameterType="Program">
+		INSERT INTO program_table
+		(ID,UserID,UserName)
+		VALUE (#{Id},#{userId},#{userName})
+	</insert>
 
 </mapper>
