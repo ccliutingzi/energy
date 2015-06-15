@@ -6,7 +6,7 @@
 
 	<resultMap id="result" type="Approval">
 		<result property="id" column="ID" />
-		<result property="userID" column="UserID" />
+		<result property="userId" column="UserID" />
 		<result property="userName" column="UserName" />
 		<result property="fowName" column="FlowName" />
 		<result property="department" column="Department" />
@@ -22,7 +22,7 @@
 	<insert id="addApproval" parameterType="Approval">
 		INSERT INTO approval_table
 		(ID,UserID,UserName,FlowName,Department,Content,Remark,ContractNumber,Partner,CreateTime,FlowType,Status)
-		VALUES (#{id},#{userID},#{userName},#{flowName},#{department},#{content},#{remark},#{contractNumber},
+		VALUES (#{id},#{userId},#{userName},#{flowName},#{department},#{content},#{remark},#{contractNumber},
 		 #{partner},#{createTime},#{flowType},#{status})
 	</insert>
 

@@ -6,7 +6,7 @@
 
 	<resultMap id="result" type="Absent">
 		<result property="id" column="ID" />
-		<result property="userID" column="UserID" />
+		<result property="userId" column="UserID" />
 		<result property="userName" column="UserName" />
 		<result property="absentType" column="AbsentType" />
 		<result property="reason" column="Reason" />
@@ -21,7 +21,7 @@
 	<insert id="addAbsent" parameterType="Absent">
 		INSERT INTO absent_table
 		(ID,UserID,UserName,AbsentType,Reason,Position,Department,BeginTime,EndTime,CreateTime,Status)
-		VALUES (#{id},#{userID},#{userName},#{absentType},#{reason},#{position},#{department},#{beginTime},
+		VALUES (#{id},#{userId},#{userName},#{absentType},#{reason},#{position},#{department},#{beginTime},
 		 #{endTime},#{createTime},#{status})
 	</insert>
 

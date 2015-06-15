@@ -2,44 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.energy.weixin.mapper.UserMapper">
+<mapper namespace="com.energy.weixin.mapper.Sign_UserMapper">
 
-	<resultMap id="result" type="user">
-		<result property="id" column="id" />
-		<result property="userName" column="userName" />
-		<result property="password" column="password" />
+	<resultMap id="result" type="Sign_User">
+		<result property="signId" column="SignID" />
+		<result property="userId" column="UserID" />
+		<result property="location" column="Location" />
+		<result property="signTime" column="SignTime" />
+		<result property="attendType" column="AttendType" />
+		<result property="remark" column="Remark" />
 	</resultMap>
 
-	<insert id="addUser" parameterType="user">
-		INSERT INTO user_table
-		(id,username,password)
-		VALUE (#{id},#{userName},#{password})
+	<insert id="addSign_User" parameterType="Sign_User">
+		INSERT INTO sign_user_table
+		(SignID,UserID,Location,SignTime,AttendType,Remark)
+		VALUE (#{signId},#{userId},#{location},#{signTime},#{attendType},#{remark})
 	</insert>
 
 
-	<select id="getAllUser" resultMap="result">
-		SELECT id,username,password
-		FROM user_table;
+	<select id="getAllSign_User" resultMap="result">
+		SELECT * FROM sign_user_table;
 	</select>
 
-	<select id="getUserById" parameterType="String" resultMap="result">
-		SELECT id, username,password
-		FROM user_table where id = #{id};
+	<select id="getSign_UserById" parameterType="String" resultMap="result">
+		SELECT * FROM sign_user_table WHERE SignID = #{signId};
 	</select>
 
 	<delete id="deleteById" parameterType="string">
-		DELETE FROM
-		user_table
-		WHERE ID = #{id}
+		DELETE FROM sign_user_table WHERE SignID = #{signId};
 	</delete>
 
-	<update id="update" parameterType="user">
-		UPDATE user_table
+	<update id="update" parameterType="Sign_User">
+		UPDATE sign_user_table
 		<set>
-			<if test="userName != null ">userName = #{userName},</if>
-			<if test="password != null ">password = #{password}</if>
+			<if test="userId != null ">UserID = #{userId},</if>
+			<if test="location != null ">Location = #{location},</if>
+			<if test="signTime != null ">SignTime = #{signTime},</if>
+			<if test="attendType != null ">AttendType = #{attendType},</if>
+			<if test="remark != null ">Remark = #{remark}</if>
 		</set>
-		WHERE ID = #{id}
+		WHERE SignID = #{signId}
 	</update>
 
 </mapper>

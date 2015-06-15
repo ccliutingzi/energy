@@ -6,7 +6,7 @@
 
 	<resultMap id="result" type="Expense">
 		<result property="id" column="ID" />
-		<result property="userID" column="UserID" />
+		<result property="userId" column="UserID" />
 		<result property="userName" column="UserName" />
 		<result property="theme" column="Theme" />
 		<result property="department" column="Department" />
@@ -20,7 +20,7 @@
 	<insert id="addExpense" parameterType="Expense">
 		INSERT INTO expense_table
 		(ID,UserID,UserName,Theme,Department,Reason,Amount,AnnexCount,CreateTime,Status)
-		VALUES (#{id},#{userID},#{userName},#{theme},#{department},#{reason},#{amount},
+		VALUES (#{id},#{userId},#{userName},#{theme},#{department},#{reason},#{amount},
 		#{annexCount},#{createTime},#{status})
 	</insert>
 
