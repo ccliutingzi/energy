@@ -16,7 +16,7 @@ import com.energy.weixin.mapper.MeetingMapper;
  * v1.0
  */
 @Controller
-@RequestMapping(value = "/weixin")
+@RequestMapping(value = "/meeting")
 public class MeetingController {
 
 	@Autowired

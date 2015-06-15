@@ -16,7 +16,7 @@ import com.energy.weixin.mapper.SignMapper;
  * v1.0
  */
 @Controller
-@RequestMapping(value = "/weixin")
+@RequestMapping(value = "/sign")
 public class SignController {
 
 	@Autowired

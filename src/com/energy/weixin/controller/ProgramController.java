@@ -6,7 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-//import com.energy.weixin.mapper.ProgramMapper;
+import com.energy.weixin.mapper.ProgramMapper;
 
 /** 
  * @ClassName: ProgramController 
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * v1.0
  */
 @Controller
-@RequestMapping(value = "/weixin")
+@RequestMapping(value = "/program")
 public class ProgramController {
 
-	/*@Autowired
+	@Autowired
 	private ProgramMapper programMapper;
-*/
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String page1(ModelMap model) {
 		model.addAttribute("", "");

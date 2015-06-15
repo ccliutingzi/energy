@@ -22,5 +22,6 @@
 		<typeAlias type="com.energy.weixin.entity.Meeting" alias="Meeting"/>
 		<typeAlias type="com.energy.weixin.entity.Sign_User" alias="Sign_User"/>
 		<typeAlias type="com.energy.weixin.entity.Sign" alias="Sign"/>
+		<typeAlias type="com.energy.weixin.entity.Program" alias="Program"/>
 	</typeAliases>
 </configuration>
