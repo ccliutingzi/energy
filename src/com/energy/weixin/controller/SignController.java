@@ -36,6 +36,11 @@ public class SignController {
 		return view;
 	}
 	
+	/**
+	 * 添加一个签到信息
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="addSign", method = RequestMethod.GET)
 	public String addSign(ModelMap model) {
 		try{
@@ -47,4 +52,14 @@ public class SignController {
 		return "sign_add";
 	}
 
+	/**
+	 * 查询当月统计
+	 * @return
+	 */
+	public ModelAndView queryCurrentMonth(){
+		ModelAndView view = new ModelAndView();
+		view.addObject("result", "OK");
+		return view;
+	}
+	
 }
