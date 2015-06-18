@@ -17,8 +17,8 @@ import com.energy.weixin.enums.Status;
  * v1.0
  */
 public class Program implements Serializable {
- 
-	private static final long serialVersionUID = -2123103060365888872L;
+
+	private static final long serialVersionUID = -3404933128858752120L;
 	
 	/*
 	 * ID

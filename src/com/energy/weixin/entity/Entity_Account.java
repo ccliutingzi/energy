@@ -2,6 +2,10 @@ package com.energy.weixin.entity;
 
 import java.io.Serializable;
 
+import com.energy.weixin.enums.AccountType;
+import com.energy.weixin.enums.EntityType;
+import com.energy.weixin.enums.PersonType;
+
 /** 
  * @ClassName: Entity_Account 
  * @Description: 实体-账户对应类
@@ -20,7 +24,7 @@ public class Entity_Account implements Serializable {
 	/*
 	 * 实体类型，QD为签到，QJ为请假，BX为报销，SP为审批，HY为会议室预定，XM为项目管理
 	 */
-	private String entityType;
+	private EntityType entityType;
 	/*
 	 * 账户ID 
 	 */
@@ -28,11 +32,11 @@ public class Entity_Account implements Serializable {
 	/*
 	 * 账户类型，D为部门，T为标签，U为用户
 	 */
-	private String accoutType;
+	private AccountType accountType;
 	/*
 	 * 类型，SH为审核，CS为抄送，CW为财务
 	 */
-	private String personType;
+	private PersonType personType;
 	/*
 	 * 处理结果，1为已处理/同意，0为未处理/拒绝
 	 */
@@ -45,14 +49,14 @@ public class Entity_Account implements Serializable {
 	public Entity_Account() {
 	}
 	
-	public Entity_Account(String entityID, String entityType, String accountID,
-			String accoutType, String personType, String dealResult,
+	public Entity_Account(String entityID, EntityType entityType, String accountID,
+			AccountType accountType, PersonType personType, String dealResult,
 			String remark) {
 		super();
 		this.entityID = entityID;
 		this.entityType = entityType;
 		this.accountID = accountID;
-		this.accoutType = accoutType;
+		this.accountType = accountType;
 		this.personType = personType;
 		this.dealResult = dealResult;
 		this.remark = remark;
@@ -64,10 +68,10 @@ public class Entity_Account implements Serializable {
 	public void setEntityID(String entityID) {
 		this.entityID = entityID;
 	}
-	public String getEntityType() {
+	public EntityType getEntityType() {
 		return entityType;
 	}
-	public void setEntityType(String entityType) {
+	public void setEntityType(EntityType entityType) {
 		this.entityType = entityType;
 	}
 	public String getAccountID() {
@@ -76,16 +80,16 @@ public class Entity_Account implements Serializable {
 	public void setAccountID(String accountID) {
 		this.accountID = accountID;
 	}
-	public String getAccoutType() {
-		return accoutType;
+	public AccountType getAccountType() {
+		return accountType;
 	}
-	public void setAccoutType(String accoutType) {
-		this.accoutType = accoutType;
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
 	}
-	public String getPersonType() {
+	public PersonType getPersonType() {
 		return personType;
 	}
-	public void setPersonType(String personType) {
+	public void setPersonType(PersonType personType) {
 		this.personType = personType;
 	}
 	public String getDealResult() {
