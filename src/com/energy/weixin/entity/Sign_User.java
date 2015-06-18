@@ -3,6 +3,8 @@ package com.energy.weixin.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.energy.weixin.enums.AttendType;
+
 /** 
  * @ClassName: Sign_User 
  * @Description: 用户签到类
@@ -33,7 +35,7 @@ public class Sign_User implements Serializable {
 	/*
 	 * 出勤类型，QD为签到，QT为签退
 	 */
-	private String attendType;
+	private AttendType attendType;
 	/*
 	 * 备注
 	 */
@@ -44,7 +46,7 @@ public class Sign_User implements Serializable {
 	}
 
 	public Sign_User(String signID, String userID, String location,
-			Date signTime, String attendType, String remark) {
+			Date signTime, AttendType attendType, String remark) {
 		super();
 		this.signID = signID;
 		this.userID = userID;
@@ -86,11 +88,11 @@ public class Sign_User implements Serializable {
 		this.signTime = signTime;
 	}
 
-	public String getAttendType() {
+	public AttendType getAttendType() {
 		return attendType;
 	}
 
-	public void setAttendType(String attendType) {
+	public void setAttendType(AttendType attendType) {
 		this.attendType = attendType;
 	}
 

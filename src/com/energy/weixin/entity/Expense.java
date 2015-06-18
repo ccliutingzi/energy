@@ -3,6 +3,8 @@ package com.energy.weixin.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.energy.weixin.enums.Status;
+
 /** 
  * @ClassName: Expense 
  * @Description: 报销类
@@ -51,9 +53,9 @@ public class Expense implements Serializable {
 	 */
 	private Date createTime;
 	/*
-	 * 当前状态，0-待审核，1-审核中，2-已审核，3-待报销，4-已报销
+	 * 当前状态，1-待审核，2-审核中，3-已审核，4-待报销，5-已报销
 	 */
-	private char status;
+	private Status status;
 	
 	public Expense() {
 		super();
@@ -61,7 +63,7 @@ public class Expense implements Serializable {
 
 	public Expense(String id, String userId, String userName, String theme,
 			String department, String reason, float amount, int annexCount,
-			Date createTime, char status) {
+			Date createTime, Status status) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -147,11 +149,11 @@ public class Expense implements Serializable {
 		this.createTime = createTime;
 	}
 
-	public char getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(char status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
