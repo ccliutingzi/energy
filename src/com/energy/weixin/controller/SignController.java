@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.energy.weixin.entity.Sign;
 import com.energy.weixin.mapper.SignMapper;
 
 /** 
@@ -22,16 +23,15 @@ public class SignController {
 	@Autowired
 	private SignMapper signMapper;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String page1(ModelMap model) {
-		model.addAttribute("", "");
-		return "hello";
-	}
-	
-	@RequestMapping(value = "mypage",method = RequestMethod.GET)
-	public String page2(ModelMap model) {
-		model.addAttribute("myparam", "1");
-		return "mypage";
+	@RequestMapping(value="addSign", method = RequestMethod.GET)
+	public String addSign(ModelMap model) {
+		try{
+			signMapper.addSign(new Sign("1", "123", "刘闯闯", null, null, null, null));
+			model.addAttribute("result", "OK");
+		} catch (Exception e){
+			model.addAttribute("result", "ERROR");
+		}
+		return "sign_add";
 	}
 
 }
