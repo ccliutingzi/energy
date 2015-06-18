@@ -32,11 +32,11 @@
 	
 	<insert id="addProgram" parameterType="Program">
 		INSERT INTO program_table
-		(ID,UserID,UserNameID,ProgramName,Partner,PartnerPerson,ConstructionType,
+		(ID,UserID,UserName,ProgramName,Partner,PartnerPerson,ConstructionType,
 			ProgramNature,ProxySignTime,ContractSignTime,TotalInvestment,DesignFee,
 			ProgramScale,ExpectedEndDate,CompletedStage,PresentStage,ApprovalMatter,
 			CompleteMatter,DrawingsMatter,ProgramType,Remark,IsEnsured,Status)
-		VALUE (#{id},#{userId},#{userName},#{programName},#{partner},#{partnerPerson},#{constructionType}
+		VALUES (#{id},#{userId},#{userName},#{programName},#{partner},#{partnerPerson},#{constructionType}
 		,#{programNature},#{proxySignTime},#{contractSignTime},#{totalInvestment},#{designFee}
 		,#{programScale},#{expectedEndDate},#{completedStage},#{presentStage},#{approvalMatter}
 		,#{completeMatter},#{drawingsMatter},#{programType},#{remark},#{isEnsured},#{status})

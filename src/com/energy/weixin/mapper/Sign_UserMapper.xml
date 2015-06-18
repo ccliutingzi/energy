@@ -16,7 +16,7 @@
 	<insert id="addSign_User" parameterType="Sign_User">
 		INSERT INTO sign_user_table
 		(SignID,UserID,Location,SignTime,AttendType,Remark)
-		VALUE (#{signId},#{userId},#{location},#{signTime},#{attendType},#{remark})
+		VALUES (#{signId},#{userId},#{location},#{signTime},#{attendType},#{remark})
 	</insert>
 
 
