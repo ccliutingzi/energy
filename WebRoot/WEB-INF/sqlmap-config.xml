@@ -23,5 +23,10 @@
 		<typeAlias type="com.energy.weixin.entity.Sign_User" alias="Sign_User"/>
 		<typeAlias type="com.energy.weixin.entity.Sign" alias="Sign"/>
 		<typeAlias type="com.energy.weixin.entity.Program" alias="Program"/>
+		<typeAlias type="com.energy.weixin.entity.Program_Chief" alias="Program_Chief"/>
+		<typeAlias type="com.energy.weixin.entity.Program_Ensure" alias="Program_Ensure"/>
+		<typeAlias type="com.energy.weixin.entity.Program_Feed" alias="Program_Feed"/>
+		<typeAlias type="com.energy.weixin.entity.Program_Position" alias="Program_Position"/>
+		<typeAlias type="com.energy.weixin.entity.Program_Payment" alias="Program_Payment"/>
 	</typeAliases>
 </configuration>
