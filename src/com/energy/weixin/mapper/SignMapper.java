@@ -8,12 +8,12 @@ public interface SignMapper {
 
 	public void addSign(Sign sign);
 
-	public List<Sign> getAllSign();
+	public List<Sign> signsToday();
 
 	public Sign getSignById(String id);
 
 	public void deleteById(String id);
 
 	public void update(Sign sign);
-
+	
 }

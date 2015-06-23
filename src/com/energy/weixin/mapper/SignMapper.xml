@@ -20,8 +20,11 @@
 		VALUES (#{id},#{userId},#{userName},#{theme},#{beginTime},#{endTime},#{signType})
 	</insert>
 
-	<select id="getAllSign" resultMap="result">
-		SELECT * FROM sign_table;
+	<select id="signsToday" parameterType="String" resultMap="result">
+		SELECT *  FORM sign_table 
+		a WHERE date(BeginTime)=CURDATE() AND (SignType="KQ" or EXISTS(
+		SELECT 0 FROM entity_account_table b WHERE b.entityID=a.ID AND 
+		b.accountID=#{userId} AND b.targetDate=CURDATE()));
 	</select>
 
 	<select id="getSignById" parameterType="String" resultMap="result">
