@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.energy.weixin.mapper.ProgramMapper">
+
+	<resultMap id="result" type="Program">
+		<result property="id" column="ID" />
+		<result property="userId" column="UserID" />
+		<result property="userName" column="UserName" />
+		<result property="programName" column="ProgramName" />
+		<result property="partner" column="Partner" />
+		<result property="partnerPerson" column="PartnerPerson" />
+		<result property="constructionType" column="ConstructionType" />
+		<result property="programNature" column="ProgramNature" />
+		<result property="proxySignTime" column="ProxySignTime" />
+		<result property="contractSignTime" column="ContractSignTime" />
+		<result property="totalInvestment" column="TotalInvestment" />
+		<result property="designFee" column="DesignFee" />
+		<result property="programScale" column="ProgramScale" />
+		<result property="expectedEndDate" column="ExpectedEndDate" />
+		<result property="completedStage" column="CompletedStage" />
+		<result property="presentStage" column="PresentStage" />
+		<result property="approvalMatter" column="ApprovalMatter" />
+		<result property="completeMatter" column="CompleteMatter" />
+		<result property="drawingsMatter" column="DrawingsMatter" />
+		<result property="programType" column="ProgramType" />
+		<result property="remark" column="Remark" />
+		<result property="isEnsured" column="IsEnsured" />
+		<result property="status" column="Status" />
+	</resultMap>
+	
+	<insert id="addProgram" parameterType="Program">
+		INSERT INTO program_table
+		(ID,UserID,UserName,ProgramName,Partner,PartnerPerson,ConstructionType,
+			ProgramNature,ProxySignTime,ContractSignTime,TotalInvestment,DesignFee,
+			ProgramScale,ExpectedEndDate,CompletedStage,PresentStage,ApprovalMatter,
+			CompleteMatter,DrawingsMatter,ProgramType,Remark,IsEnsured,Status)
+		VALUES (#{id},#{userId},#{userName},#{programName},#{partner},#{partnerPerson},#{constructionType}
+		,#{programNature},#{proxySignTime},#{contractSignTime},#{totalInvestment},#{designFee}
+		,#{programScale},#{expectedEndDate},#{completedStage},#{presentStage},#{approvalMatter}
+		,#{completeMatter},#{drawingsMatter},#{programType},#{remark},#{isEnsured},#{status})
+	</insert>
+
+</mapper>
