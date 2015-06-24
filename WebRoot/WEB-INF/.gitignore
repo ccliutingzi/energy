@@ -1,8 +1,4 @@
-/classes
-classes
-/.settings
-.classpath
-.project
-/bin
-.DS_Store
-/target
+/classes/
+classes/
+./classes
+./classes/

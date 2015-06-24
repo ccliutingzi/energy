@@ -1,4 +1,5 @@
-/classes
+/WebRoot/WEB-INF/classes/
+WebRoot/WEB-INF/classes/
 /.settings
 .classpath
 .project
