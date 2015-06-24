@@ -31,5 +31,5 @@
         <plugin interceptor="com.energy.weixin.interceptor.PaginationInterceptor">  
             <property name="databaseType" value="mysql" />  
         </plugin>  
-    </plugins>  
+    </plugins>
 </configuration>

@@ -19,7 +19,7 @@ import com.energy.weixin.mapper.ApprovalMapper;
 @RequestMapping(value = "/approval")
 public class ApprovalController {
 
-	@Autowired
+	//@Autowired
 	private ApprovalMapper approvalMapper;
 
 	@RequestMapping(method = RequestMethod.GET)

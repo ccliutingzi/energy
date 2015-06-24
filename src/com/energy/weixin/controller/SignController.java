@@ -30,7 +30,7 @@ import com.energy.weixin.utils.CommonUtil;
 @RequestMapping(value = "/sign")
 public class SignController {
 
-	@Autowired
+	//@Autowired
 	private SignMapper signMapper;
 
 	/**

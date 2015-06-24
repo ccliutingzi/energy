@@ -6,7 +6,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.energy.weixin.entity.Absent;
 import com.energy.weixin.mapper.AbsentMapper;
+import com.energy.weixin.service.IAbsentService;
 
 /** 
  * @ClassName: AbsentController 
@@ -20,7 +22,7 @@ import com.energy.weixin.mapper.AbsentMapper;
 public class AbsentController {
 	
 	@Autowired
-	private AbsentMapper absentMapper;
+	private IAbsentService absentService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String page1(ModelMap model) {
@@ -31,6 +33,10 @@ public class AbsentController {
 	@RequestMapping(value = "mypage",method = RequestMethod.GET)
 	public String page2(ModelMap model) {
 		model.addAttribute("myparam", "1");
+		Absent absent = new Absent();
+		absent.setUserName("ft");
+		absent.setUserId("1111");
+		absentService.addAbsent(absent);
 		return "mypage";
 	}
 

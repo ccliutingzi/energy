@@ -19,7 +19,7 @@ import com.energy.weixin.mapper.MeetingMapper;
 @RequestMapping(value = "/meeting")
 public class MeetingController {
 
-	@Autowired
+	//@Autowired
 	private MeetingMapper meetingMapper;
 
 	@RequestMapping(method = RequestMethod.GET)

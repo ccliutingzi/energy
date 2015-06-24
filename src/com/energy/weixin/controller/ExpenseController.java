@@ -19,7 +19,7 @@ import com.energy.weixin.mapper.ExpenseMapper;
 @RequestMapping(value = "/expense")
 public class ExpenseController {
 
-	@Autowired
+	//@Autowired
 	private ExpenseMapper expenseMapper;
 
 	@RequestMapping(method = RequestMethod.GET)

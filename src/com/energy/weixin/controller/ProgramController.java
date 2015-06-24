@@ -19,7 +19,7 @@ import com.energy.weixin.mapper.ProgramMapper;
 @RequestMapping(value = "/program")
 public class ProgramController {
 
-	@Autowired
+	//@Autowired
 	private ProgramMapper programMapper;
 
 	@RequestMapping(method = RequestMethod.GET)

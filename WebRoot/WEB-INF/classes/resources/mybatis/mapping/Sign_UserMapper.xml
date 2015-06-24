@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.energy.weixin.mapper.Sign_UserMapper">
+<mapper namespace="com.energy.weixin.dao.ISign_UserDao">
 
 	<resultMap id="result" type="Sign_User">
 		<result property="signId" column="SignID" />

@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.energy.weixin.enums.AbsentType;
 import com.energy.weixin.enums.Status;
+import com.energy.weixin.utils.CommonUtil;
 
 /** 
  * @ClassName: Absent 
@@ -62,7 +63,9 @@ public class Absent implements Serializable {
 	 */
 	private Status status;
 	
-	public Absent(){}
+	public Absent(){
+		this.id = CommonUtil.GeneGUID();
+	}
 	
 	public Absent(String id, String userId, String userName, AbsentType absentType, String reason,
 			String position, String department, Date beginTime, Date endTime,

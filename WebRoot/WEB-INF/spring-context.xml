@@ -28,16 +28,18 @@
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource" />
-	
-	<!-- 定义SqlSessionFactory，表明当你使用MapperFactoryBean时configLocation不是必须的 -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="WEB-INF/mybatis-config.xml" />
-    </bean>
 
-    <!-- 配置mappers扫描路径 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="resources.mybatis.mapping" />
-    </bean>
-    
+	<!-- 定义SqlSessionFactory，表明当你使用MapperFactoryBean时configLocation不是必须的 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="WEB-INF/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath*:resources/mybatis/mapping/*.xml" />
+	</bean>
+
+	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.energy.weixin.dao" />
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+	</bean>
+
 </beans>
