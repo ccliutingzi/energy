@@ -1,23 +1,11 @@
 package com.energy.weixin.controller;
 
-import java.util.Date;
-import java.util.List;
-
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.util.JSONPObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.energy.weixin.entity.Sign;
-import com.energy.weixin.enums.SignType;
-import com.energy.weixin.mapper.SignMapper;
-import com.energy.weixin.utils.CommonUtil;
 
 /** 
  * @ClassName: SignController 
@@ -31,7 +19,6 @@ import com.energy.weixin.utils.CommonUtil;
 public class SignController {
 
 	//@Autowired
-	private SignMapper signMapper;
 
 	/**
 	 * 签到处，显示今天所有的签到信息
@@ -41,7 +28,7 @@ public class SignController {
 	public ModelAndView signsOfToday( ) {
 		ModelAndView view = new ModelAndView("sign_today");
 		// TODO 取出今天的所有签到信息
-		List<Sign> signs = signMapper.signsToday();
+		//List<Sign> signs = signMapper.signsToday();
 		view.addObject("result", "OK");
 		return view;
 	}
@@ -111,8 +98,7 @@ public class SignController {
 	public String doAdd() {
 		try{
 			// TODO 插入数据
-			signMapper.addSign(new Sign(CommonUtil.GeneGUID(), "NT10101001", 
-					"张至栋", "考勤签到", new Date(), new Date(), SignType.KQ));
+			//signMapper.addSign(new Sign(CommonUtil.GeneGUID(), "NT10101001", "张至栋", "考勤签到", new Date(), new Date(), SignType.KQ));
 			// TODO 向相关的人员发送签到消息
 		} catch (Exception e){
 		}

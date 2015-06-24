@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.energy.weixin.entity.Absent;
-import com.energy.weixin.mapper.AbsentMapper;
 import com.energy.weixin.service.IAbsentService;
 
 /** 

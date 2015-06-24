@@ -37,14 +37,12 @@ public class AbsentServiceImpl implements IAbsentService {
 
 	@Override
 	public Absent getAbsentById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return absentDao.getAbsentById(id);
 	}
 
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-
+		absentDao.deleteById(id);
 	}
 
 	@Override
