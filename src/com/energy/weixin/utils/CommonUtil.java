@@ -23,7 +23,7 @@ public class CommonUtil {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.print(GeneGUID().length());
+		System.out.print(GeneGUID().length()+"");
 	}
 
 }
