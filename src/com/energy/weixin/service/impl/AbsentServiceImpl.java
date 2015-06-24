@@ -32,8 +32,7 @@ public class AbsentServiceImpl implements IAbsentService {
 
 	@Override
 	public List<Absent> getAllAbsent() {
-		// TODO Auto-generated method stub
-		return null;
+		return absentDao.getAllAbsent();
 	}
 
 	@Override

@@ -39,5 +39,14 @@ public class AbsentController {
 		absentService.addAbsent(absent);
 		return "mypage";
 	}
+	@RequestMapping(value = "mypage1",method = RequestMethod.GET)
+	public String page3(ModelMap model) {
+		model.addAttribute("myparam", "1");
+		Absent absent = new Absent();
+		absent.setUserName("ft");
+		absent.setUserId("1111");
+		absentService.getAllAbsent();
+		return "mypage";
+	}
 
 }

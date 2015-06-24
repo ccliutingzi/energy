@@ -9,11 +9,14 @@ package com.energy.weixin.entity;
  * @author tf
  * 
  */
-public class Page {
+public class PageQueryParameter {
 	// 页码，默认是第一页
 	private int pageIndex = 1;
 	// 每页显示的记录数，默认是15
 	private int pageSize = 15;
+	//分页参数
+	private Object parameter;
+	
 	public int getPageIndex() {
 		return pageIndex;
 	}
@@ -26,4 +29,11 @@ public class Page {
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
+	public Object getParameter() {
+		return parameter;
+	}
+	public void setParameter(Object parameter) {
+		this.parameter = parameter;
+	}
+	
 }

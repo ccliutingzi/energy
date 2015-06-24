@@ -23,7 +23,8 @@ public class AbsentDaoImpl implements IAbsentDao {
 	private BaseDao baseDao;
 
 	private static final String ADDABSENT_SQL = "addAbsent";
-	
+	private static final String GETALLABSENT_SQL = "getAllAbsent";
+
 	@Override
 	public void addAbsent(Absent absent) {
 		baseDao.insert(ADDABSENT_SQL, absent);
@@ -31,7 +32,7 @@ public class AbsentDaoImpl implements IAbsentDao {
 
 	@Override
 	public List<Absent> getAllAbsent() {
-		return null;
+		return baseDao.selectList(GETALLABSENT_SQL);
 	}
 
 	@Override
