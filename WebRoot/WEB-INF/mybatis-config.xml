@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration
-    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
 	<settings>
@@ -29,4 +27,9 @@
 		<typeAlias type="com.energy.weixin.entity.Program_Position" alias="Program_Position"/>
 		<typeAlias type="com.energy.weixin.entity.Program_Payment" alias="Program_Payment"/>
 	</typeAliases>
+	<plugins>  
+        <plugin interceptor="com.energy.weixin.interceptor.PaginationInterceptor">  
+            <property name="databaseType" value="mysql" />  
+        </plugin>  
+    </plugins>  
 </configuration>

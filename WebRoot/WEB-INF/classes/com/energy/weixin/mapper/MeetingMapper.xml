@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.energy.weixin.mapper.MeetingMapper">
+
+	<resultMap id="result" type="Meeting">
+		<result property="id" column="ID" />
+		<result property="userId" column="UserID" />
+		<result property="userName" column="UserName" />
+		<result property="buildingId" column="BuildingID" />
+		<result property="roomId" column="RoomID" />
+		<result property="date" column="Date" />
+		<result property="time" column="Time" />
+		<result property="timeSpan" column="TimeSpan" />
+		<result property="theme" column="Theme" />
+	</resultMap>
+
+	<insert id="addMeeting" parameterType="Meeting">
+		INSERT INTO meeting_table
+		(ID,UserID,UserName,BuildingID,RoomID,Date,Time,TimeSpan,Theme)
+		VALUES (#{id},#{userId},#{userName},#{buildingId},#{roomId},#{date},#{time},
+		#{timeSpan},#{theme})
+	</insert>
+
+	<select id="getAllMeeting" resultMap="result">
+		SELECT * FROM meeting_table;
+	</select>
+
+	<select id="getMeetingById" parameterType="String" resultMap="result">
+		SELECT * FROM meeting_table WHERE ID = #{id};
+	</select>
+
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM meeting_table WHERE ID = #{id}
+	</delete>
+
+	<update id="update" parameterType="Meeting">
+		UPDATE meeting_table
+		<set>
+			<if test="userId != null ">UserID = #{userId},</if>
+			<if test="userName != null ">UserName = #{userName},</if>
+			<if test="buildingId != null ">BuildingID = #{buildingId},</if>
+			<if test="roomId != null ">RoomID = #{roomId},</if>
+			<if test="date != null ">Date = #{date},</if>
+			<if test="time != null ">Time = #{time},</if>
+			<if test="timeSpan != null ">TimeSpan = #{timeSpan},</if>
+			<if test="theme != null ">Theme = #{theme}</if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+
+</mapper>

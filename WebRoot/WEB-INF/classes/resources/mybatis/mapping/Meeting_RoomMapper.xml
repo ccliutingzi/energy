@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.energy.weixin.mapper.Meeting_RoomMapper">
+
+	<resultMap id="result" type="Meeting_Room">
+		<result property="id" column="ID" />
+		<result property="buildingId" column="BuildingID" />
+		<result property="roomName" column="RoomName" />
+		<result property="capacity" column="Capacity" />
+		<result property="equipment" column="Equipment" />
+	</resultMap>
+
+	<insert id="addMeeting_Room" parameterType="Meeting_Room">
+		INSERT INTO meeting_room_table
+		(ID,BuildingID,RoomName,Capacity,Equipment)
+		VALUES (#{id},#{buildingId},#{roomName},#{capacity},#{equipment})
+	</insert>
+
+	<select id="getAllMeeting_Room" resultMap="result">
+		SELECT * FROM meeting_room_table;
+	</select>
+
+	<select id="getMeeting_RoomById" parameterType="String" resultMap="result">
+		SELECT * FROM meeting_room_table WHERE ID = #{id};
+	</select>
+
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM meeting_room_table WHERE ID = #{id}
+	</delete>
+
+	<update id="update" parameterType="Meeting_Room">
+		UPDATE meeting_room_table
+		<set>
+			<if test="buildingId != null ">BuildingID = #{buildingId}</if>
+			<if test="roomName != null ">RoomName = #{roomName}</if>
+			<if test="capacity != null ">Capacity = #{capacity}</if>
+			<if test="equipment != null ">Equipment = #{equipment}</if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+
+</mapper>

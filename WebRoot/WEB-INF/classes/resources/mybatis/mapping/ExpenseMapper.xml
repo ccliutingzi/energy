@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.energy.weixin.mapper.ExpenseMapper">
+
+	<resultMap id="result" type="Expense">
+		<result property="id" column="ID" />
+		<result property="userId" column="UserID" />
+		<result property="userName" column="UserName" />
+		<result property="theme" column="Theme" />
+		<result property="department" column="Department" />
+		<result property="reason" column="Reason" />
+		<result property="amount" column="Amount" />
+		<result property="annexCount" column="AnnexCount" />
+		<result property="createTime" column="CreateTime" />
+		<result property="status" column="Status" />
+	</resultMap>
+
+	<insert id="addExpense" parameterType="Expense">
+		INSERT INTO expense_table
+		(ID,UserID,UserName,Theme,Department,Reason,Amount,AnnexCount,CreateTime,Status)
+		VALUES (#{id},#{userId},#{userName},#{theme},#{department},#{reason},#{amount},
+		#{annexCount},#{createTime},#{status})
+	</insert>
+
+	<select id="getAllExpense" resultMap="result">
+		SELECT * FROM expense_table;
+	</select>
+
+	<select id="getExpenseById" parameterType="String" resultMap="result">
+		SELECT * FROM expense_table WHERE ID = #{id};
+	</select>
+
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM expense_table WHERE ID = #{id}
+	</delete>
+
+	<update id="update" parameterType="Expense">
+		UPDATE expense_table
+		<set>
+			<if test="userId != null ">UserID = #{userId},</if>
+			<if test="userName != null ">UserName = #{userName},</if>
+			<if test="theme != null ">Theme = #{theme},</if>
+			<if test="department != null ">Department = #{department},</if>
+			<if test="reason != null ">Reason = #{reason},</if>
+			<if test="amount != null ">Amount = #{amount},</if>
+			<if test="annexCount != null ">AnnexCount = #{annexCount},</if>
+			<if test="createTime != null ">CreateTime = #{createTime},</if>
+			<if test="status != null ">Status = #{status}</if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+
+</mapper>

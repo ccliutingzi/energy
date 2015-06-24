@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.energy.weixin.mapper.FileMapper">
+
+	<resultMap id="result" type="File">
+		<result property="id" column="ID" />
+		<result property="fileName" column="FileName" />
+		<result property="filePath" column="FilePath" />
+		<result property="zoomPath" column="ZoomPath" />
+	</resultMap>
+
+	<insert id="addFile" parameterType="File">
+		INSERT INTO file_table
+		(ID,FileName,FilePath,ZoomPath)
+		VALUES (#{id},#{fileName},#{filePath},#{zoomPath})
+	</insert>
+
+	<select id="getAllFile" resultMap="result">
+		SELECT * FROM file_table;
+	</select>
+
+	<select id="getFileById" parameterType="String" resultMap="result">
+		SELECT * FROM file_table WHERE ID = #{id};
+	</select>
+
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM file_table WHERE ID = #{id}
+	</delete>
+
+	<update id="update" parameterType="File">
+		UPDATE file_table
+		<set>
+			<if test="fileName != null ">FileName = #{fileName},</if>
+			<if test="filePath != null ">FilePath = #{filePath},</if>
+			<if test="zoomPath != null ">ZoomPath = #{zoomPath}</if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+
+</mapper>

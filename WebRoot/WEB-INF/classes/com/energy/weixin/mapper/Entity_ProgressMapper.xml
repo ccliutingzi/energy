@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.energy.weixin.mapper.Entity_ProgressMapper">
+
+	<resultMap id="result" type="Entity_Progress">
+		<result property="entityId" column="EntityID" />
+		<result property="content" column="Content" />
+	</resultMap>
+
+	<insert id="addEntity_Progress" parameterType="Entity_Progress">
+		INSERT INTO entity_progress_table
+		(EntityID,Content) VALUES (#{entityId},#{content})
+	</insert>
+
+	<select id="getAllEntity_Progress" resultMap="result">
+		SELECT * FROM entity_progress_table;
+	</select>
+
+	<select id="getEntity_ProgressById" parameterType="String" resultMap="result">
+		SELECT * FROM entity_progress_table WHERE EntityID = #{entityId};
+	</select>
+
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM entity_progress_table WHERE EntityID = #{entityId};
+	</delete>
+
+	<update id="update" parameterType="Entity_Progress">
+		UPDATE entity_progress_table
+		<set>
+			<if test="entityId != null ">EntityID = #{entityId},</if>
+			<if test="content != null ">Content = #{content}</if>
+		</set>
+		WHERE EntityID = #{entityId}
+	</update>
+
+</mapper>

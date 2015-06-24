@@ -12,7 +12,7 @@
 	   		">
 
 	<!-- 记载属性文件，可以有多个 -->
-	<context:property-placeholder location="/WEB-INF/mybatis.properties" />
+	<context:property-placeholder location="/WEB-INF/jdbc.properties" />
 
 	<!-- 开启注解模式来管理事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
@@ -28,16 +28,16 @@
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource" />
-		
+	
 	<!-- 定义SqlSessionFactory，表明当你使用MapperFactoryBean时configLocation不是必须的 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="WEB-INF/sqlmap-config.xml" />
+        <property name="configLocation" value="WEB-INF/mybatis-config.xml" />
     </bean>
 
     <!-- 配置mappers扫描路径 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.energy.weixin.mapper" />
+        <property name="basePackage" value="resources.mybatis.mapping" />
     </bean>
     
 </beans>
