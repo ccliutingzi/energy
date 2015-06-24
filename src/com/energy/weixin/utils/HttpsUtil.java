@@ -34,6 +34,17 @@ public class HttpsUtil {
 	private static final int DEFAULT_CONNECT_TIMEOUT = 3000;
 	private static final int DEFAULT_READ_TIMEOUT = 3000;
 
+	public static void main(String[] args) {
+		try {
+			JSONObject jo = post("https://qyapi.weixin.qq.com/cgi-bin/gettoken",
+					"corpid=wx7d7e4794f9070be4" +
+					"&corpsecret=kfjz6G5qj0CaCE48ylCU-fyQFg1SG4mNTUSSZsd4kGphWw28V6Qx4wjYpYzgfLR-");
+			System.out.print(jo.toJSONString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * GET请求
 	 * 
