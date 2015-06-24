@@ -2,20 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.energy.weixin.dao.IProgramChiefDao">
+<mapper namespace="com.energy.weixin.dao.IProgramFeedDao">
 
-	<resultMap id="result" type="Program_Chief">
+	<resultMap id="result" type="Program_Feed">
 		<result property="id" column="ID" />
 		<result property="programId" column="ProgramID" />
 		<result property="userId" column="UserID" />
 		<result property="userName" column="UserName" />
-		<result property="type" column="Type" />
+		<result property="content" column="Content" />
 	</resultMap>
 	
-	<insert id="addProgram_Chief" parameterType="Program_Chief">
-		INSERT INTO program_chief_table
-		(ID,ProgramID,UserID,UserName,Type)
-		VALUES (#{id},#{programId},#{userId},#{userName},#{type})
+	<insert id="addProgram_Feed" parameterType="Program_Feed">
+		INSERT INTO program_feed_table
+		(ID,ProgramID,UserID,UserNameID,Content)
+		VALUES (#{id},#{programId},#{userId},#{userName},#{content})
 	</insert>
 
 </mapper>

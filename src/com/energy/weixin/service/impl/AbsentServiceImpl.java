@@ -13,6 +13,7 @@ import com.energy.weixin.entity.Absent;
 import com.energy.weixin.service.IAbsentService;
 
 /**
+ * 请假服务
  * @author tf
  * 
  *         2015年6月24日
@@ -47,7 +48,6 @@ public class AbsentServiceImpl implements IAbsentService {
 
 	@Override
 	public void update(Absent absent) {
-		// TODO Auto-generated method stub
-
+		absentDao.update(absent);
 	}
 }
