@@ -5,59 +5,47 @@ package com.energy.weixin.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.energy.weixin.dao.IMeetingDao;
 import com.energy.weixin.entity.Meeting;
 import com.energy.weixin.service.IMeetingService;
 
 /**
  * @author tf
- *
- * 2015年6月24日
+ * 
+ *         2015年6月24日
  */
+@Service("meetingService")
 public class MeetingServiceImpl implements IMeetingService {
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IMeetingService#addMeeting(com.energy.weixin.entity.Meeting)
-	 */
+	@Autowired
+	private IMeetingDao meetingDao;
+
 	@Override
 	public void addMeeting(Meeting meeting) {
-		// TODO Auto-generated method stub
-
+		meetingDao.addMeeting(meeting);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IMeetingService#getAllMeeting()
-	 */
 	@Override
 	public List<Meeting> getAllMeeting() {
-		// TODO Auto-generated method stub
-		return null;
+		return meetingDao.getAllMeeting();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IMeetingService#getMeetingById(java.lang.String)
-	 */
 	@Override
 	public Meeting getMeetingById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return meetingDao.getMeetingById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IMeetingService#deleteById(java.lang.String)
-	 */
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-
+		meetingDao.deleteById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IMeetingService#update(com.energy.weixin.entity.Meeting)
-	 */
 	@Override
 	public void update(Meeting meeting) {
-		// TODO Auto-generated method stub
-
+		meetingDao.update(meeting);
 	}
 
 }

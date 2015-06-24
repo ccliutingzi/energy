@@ -5,44 +5,48 @@ package com.energy.weixin.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.energy.weixin.dao.IMeetingRoomDao;
 import com.energy.weixin.entity.MeetingRoom;
 import com.energy.weixin.service.IMeetingRoomService;
 
 /**
  * @author tf
- *
- * 2015年6月24日
+ * 
+ *         2015年6月24日
  */
+@Service("meetingRoomService")
 public class MeetingRoomServiceImpl implements IMeetingRoomService {
 
+	@Autowired
+	private IMeetingRoomDao meetingRoomDao;
+
 	@Override
-	public void addMeeting_Room(MeetingRoom meetingRoom) {
-		// TODO Auto-generated method stub
-		
+	public void addMeetingRoom(MeetingRoom meetingRoom) {
+		meetingRoomDao.addMeetingRoom(meetingRoom);
+
 	}
 
 	@Override
-	public List<MeetingRoom> getAllMeeting_Room() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MeetingRoom> getAllMeetingRoom() {
+		return meetingRoomDao.getAllMeetingRoom();
 	}
 
 	@Override
 	public MeetingRoom getMeetingRoomById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return meetingRoomDao.getMeetingRoomById(id);
 	}
 
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-		
+		meetingRoomDao.deleteById(id);
 	}
 
 	@Override
 	public void update(MeetingRoom meetingRoom) {
-		// TODO Auto-generated method stub
-		
+		meetingRoomDao.update(meetingRoom);
 	}
 
 }

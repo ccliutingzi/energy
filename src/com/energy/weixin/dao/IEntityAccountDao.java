@@ -6,7 +6,7 @@ import com.energy.weixin.entity.EntityAccount;
 
 public interface IEntityAccountDao {
 
-	public void addEntity_Account(EntityAccount entityAccount);
+	public void addEntityAccount(EntityAccount entityAccount);
 
 	public List<EntityAccount> getAllEntityAccount();
 

@@ -6,7 +6,7 @@ import com.energy.weixin.entity.MeetingBuilding;
 
 public interface IMeetingBuildingService {
 
-	public void addMeeting_Building(MeetingBuilding meetingBuilding);
+	public void addMeetingBuilding(MeetingBuilding meetingBuilding);
 
 	public List<MeetingBuilding> getAllMeetingBuilding();
 

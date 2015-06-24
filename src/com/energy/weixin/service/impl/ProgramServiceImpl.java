@@ -3,6 +3,10 @@
  */
 package com.energy.weixin.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.energy.weixin.dao.IProgramDao;
 import com.energy.weixin.entity.Program;
 import com.energy.weixin.service.IProgramService;
 
@@ -11,15 +15,13 @@ import com.energy.weixin.service.IProgramService;
  *
  * 2015年6月24日
  */
+@Service("programService")
 public class ProgramServiceImpl implements IProgramService {
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IProgramService#addProgram(com.energy.weixin.entity.Program)
-	 */
+	@Autowired
+	private IProgramDao programDao;
 	@Override
 	public void addProgram(Program program) {
-		// TODO Auto-generated method stub
-
+		programDao.addProgram(program);
 	}
-
 }

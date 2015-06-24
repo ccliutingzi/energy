@@ -6,7 +6,7 @@ import com.energy.weixin.entity.MeetingRoom;
 
 public interface IMeetingRoomDao {
 
-	public void addMeeting_Room(MeetingRoom meetingRoom);
+	public void addMeetingRoom(MeetingRoom meetingRoom);
 
 	public List<MeetingRoom> getAllMeetingRoom();
 

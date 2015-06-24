@@ -5,6 +5,10 @@ package com.energy.weixin.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.energy.weixin.dao.IMeetingBuildingDao;
 import com.energy.weixin.entity.MeetingBuilding;
 import com.energy.weixin.service.IMeetingBuildingService;
 
@@ -13,36 +17,35 @@ import com.energy.weixin.service.IMeetingBuildingService;
  *
  * 2015年6月24日
  */
+@Service("meetingBuildingService")
 public class MeetingBuildingServiceImpl implements IMeetingBuildingService {
 
+	@Autowired
+	private IMeetingBuildingDao meetingBuildingDao;
 	@Override
-	public void addMeeting_Building(MeetingBuilding meetingBuilding) {
-		// TODO Auto-generated method stub
-		
+	public void addMeetingBuilding(MeetingBuilding meetingBuilding) {
+		meetingBuildingDao.addMeetingBuilding(meetingBuilding);		
 	}
 
 	@Override
 	public List<MeetingBuilding> getAllMeetingBuilding() {
-		// TODO Auto-generated method stub
-		return null;
+		return meetingBuildingDao.getAllMeetingBuilding();
 	}
 
 	@Override
 	public MeetingBuilding getMeetingBuildingById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return meetingBuildingDao.getMeetingBuildingById(id);
 	}
 
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
+		meetingBuildingDao.deleteById(id);
 		
 	}
 
 	@Override
 	public void update(MeetingBuilding meetingBuilding) {
-		// TODO Auto-generated method stub
-		
+		meetingBuildingDao.update(meetingBuilding);
 	}
 
 

@@ -6,7 +6,7 @@ import com.energy.weixin.entity.EntityProgress;
 
 public interface IEntityProgressDao {
 
-	public void addEntity_Progress(EntityProgress entityProgress);
+	public void addEntityProgress(EntityProgress entityProgress);
 
 	public List<EntityProgress> getAllEntity_Progress();
 

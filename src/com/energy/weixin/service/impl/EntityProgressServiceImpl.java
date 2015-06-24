@@ -5,46 +5,48 @@ package com.energy.weixin.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.energy.weixin.dao.IEntityProgressDao;
 import com.energy.weixin.entity.EntityProgress;
 import com.energy.weixin.service.IEntityProgressService;
 
 /**
  * @author tf
- *
- * 2015年6月24日
+ * 
+ *         2015年6月24日
  */
+@Service("entityProgressService")
 public class EntityProgressServiceImpl implements IEntityProgressService {
 
+	@Autowired
+	private IEntityProgressDao entityProgressDao;
+
 	@Override
-	public void addEntity_Progress(EntityProgress entity_Progress) {
-		// TODO Auto-generated method stub
-		
+	public void addEntity_Progress(EntityProgress entityProgress) {
+		entityProgressDao.addEntityProgress(entityProgress);
 	}
 
 	@Override
-	public List<EntityProgress> getAllEntity_Progress() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<EntityProgress> getAllEntityProgress() {
+		return entityProgressDao.getAllEntity_Progress();
 	}
 
 	@Override
-	public EntityProgress getEntity_ProgressById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public EntityProgress getEntityProgressById(String id) {
+		return entityProgressDao.getEntityProgressById(id);
 	}
 
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-		
+		entityProgressDao.deleteById(id);
 	}
 
 	@Override
-	public void update(EntityProgress entity_Progress) {
-		// TODO Auto-generated method stub
-		
+	public void update(EntityProgress entityProgress) {
+		entityProgressDao.update(entityProgress);
+
 	}
-
-
 
 }

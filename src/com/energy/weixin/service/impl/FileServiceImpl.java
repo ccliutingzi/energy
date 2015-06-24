@@ -5,59 +5,47 @@ package com.energy.weixin.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.energy.weixin.dao.IFileDao;
 import com.energy.weixin.entity.File;
 import com.energy.weixin.service.IFileService;
 
 /**
  * @author tf
- *
- * 2015年6月24日
+ * 
+ *         2015年6月24日
  */
+@Service("fileService")
 public class FileServiceImpl implements IFileService {
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IFileService#addFile(com.energy.weixin.entity.File)
-	 */
+	@Autowired
+	private IFileDao fileDao;
+
 	@Override
 	public void addFile(File file) {
-		// TODO Auto-generated method stub
-
+		fileDao.addFile(file);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IFileService#getAllFile()
-	 */
 	@Override
 	public List<File> getAllFile() {
-		// TODO Auto-generated method stub
-		return null;
+		return fileDao.getAllFile();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IFileService#getFileById(java.lang.String)
-	 */
 	@Override
 	public File getFileById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return fileDao.getFileById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IFileService#deleteById(java.lang.String)
-	 */
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-
+		fileDao.deleteById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IFileService#update(com.energy.weixin.entity.File)
-	 */
 	@Override
 	public void update(File file) {
-		// TODO Auto-generated method stub
-
+		fileDao.update(file);
 	}
 
 }

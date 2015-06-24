@@ -5,59 +5,47 @@ package com.energy.weixin.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.energy.weixin.dao.IExpenseDao;
 import com.energy.weixin.entity.Expense;
 import com.energy.weixin.service.IExpenseService;
 
 /**
  * @author tf
- *
- * 2015年6月24日
+ * 
+ *         2015年6月24日
  */
+@Service("expenseService")
 public class ExpenseService implements IExpenseService {
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IExpenseService#addExpense(com.energy.weixin.entity.Expense)
-	 */
+	@Autowired
+	private IExpenseDao expenseDao;
+
 	@Override
 	public void addExpense(Expense expense) {
-		// TODO Auto-generated method stub
-
+		expenseDao.addExpense(expense);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IExpenseService#getAllExpense()
-	 */
 	@Override
 	public List<Expense> getAllExpense() {
-		// TODO Auto-generated method stub
-		return null;
+		return expenseDao.getAllExpense();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IExpenseService#getExpenseById(java.lang.String)
-	 */
 	@Override
 	public Expense getExpenseById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return expenseDao.getExpenseById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IExpenseService#deleteById(java.lang.String)
-	 */
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-
+		expenseDao.deleteById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.IExpenseService#update(com.energy.weixin.entity.Expense)
-	 */
 	@Override
 	public void update(Expense expense) {
-		// TODO Auto-generated method stub
-
+		expenseDao.update(expense);
 	}
 
 }

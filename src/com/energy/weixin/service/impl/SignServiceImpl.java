@@ -5,59 +5,46 @@ package com.energy.weixin.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.energy.weixin.dao.ISignDao;
 import com.energy.weixin.entity.Sign;
 import com.energy.weixin.service.ISignService;
 
 /**
  * @author tf
- *
- * 2015年6月24日
+ * 
+ *         2015年6月24日
  */
+@Service("signService")
 public class SignServiceImpl implements ISignService {
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.ISignService#addSign(com.energy.weixin.entity.Sign)
-	 */
+	@Autowired
+	private ISignDao signDao;
+
 	@Override
 	public void addSign(Sign sign) {
-		// TODO Auto-generated method stub
-
+		signDao.addSign(sign);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.ISignService#signsToday()
-	 */
 	@Override
 	public List<Sign> signsToday() {
-		// TODO Auto-generated method stub
-		return null;
+		return signDao.signsToday();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.ISignService#getSignById(java.lang.String)
-	 */
 	@Override
 	public Sign getSignById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return signDao.getSignById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.ISignService#deleteById(java.lang.String)
-	 */
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-
+		signDao.deleteById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.energy.weixin.service.ISignService#update(com.energy.weixin.entity.Sign)
-	 */
 	@Override
 	public void update(Sign sign) {
-		// TODO Auto-generated method stub
-
+		signDao.update(sign);
 	}
-
 }

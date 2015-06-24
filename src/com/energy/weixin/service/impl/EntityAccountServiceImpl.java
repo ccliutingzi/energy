@@ -5,44 +5,47 @@ package com.energy.weixin.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.energy.weixin.dao.IEntityAccountDao;
 import com.energy.weixin.entity.EntityAccount;
 import com.energy.weixin.service.IEntityAccountService;
 
 /**
  * @author tf
- *
- * 2015年6月24日
+ * 
+ *         2015年6月24日
  */
+@Service("entityAccountService")
 public class EntityAccountServiceImpl implements IEntityAccountService {
+
+	@Autowired
+	private IEntityAccountDao entityAccountDao;
 
 	@Override
 	public void addEntityAccount(EntityAccount entityAccount) {
-		// TODO Auto-generated method stub
-		
+		entityAccountDao.addEntityAccount(entityAccount);
 	}
 
 	@Override
 	public List<EntityAccount> getAllEntityAccount() {
-		// TODO Auto-generated method stub
-		return null;
+		return entityAccountDao.getAllEntityAccount();
 	}
 
 	@Override
 	public EntityAccount getEntityAccountById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityAccountDao.getEntityAccountById(id);
 	}
 
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-		
+		entityAccountDao.deleteById(id);
 	}
 
 	@Override
 	public void update(EntityAccount entityAccount) {
-		// TODO Auto-generated method stub
-		
+		entityAccountDao.update(entityAccount);
 	}
 
 }

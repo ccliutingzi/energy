@@ -14,6 +14,6 @@ public interface ISignUserDao {
 
 	public void deleteById(String id);
 
-	public void update(SignUser sign_User);
+	public void update(SignUser signUser);
 
 }
