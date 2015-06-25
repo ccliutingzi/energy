@@ -88,13 +88,13 @@ public class AbsentController extends AbstWebController {
 	}
 
 	@RequestMapping(value = "mypage1", method = RequestMethod.GET)
-	public String page3(ModelMap model) {
-		model.addAttribute("myparam", "1");
-		Absent absent = new Absent();
-		absent.setUserName("ft");
-		absent.setUserId("1111");
-		absentService.getAllAbsent();
-		return "mypage";
+	public @ResponseBody
+	Object page3(ModelMap model) {
+		Map<String,Object> resultData = new HashMap<String,Object>();
+		resultData.put("a", "0");
+		resultData.put("b", "0");
+		resultData.put("c", "0");
+		return resultData;
 	}
 
 }
