@@ -58,4 +58,8 @@ public class ConfigUtil {
 			e.printStackTrace();
 		}
 	}
+
+	public static void main(String[] args) {
+		System.out.println(ConfigUtil.get("resources\\config\\weixin_app.properties", "send_message_url"));
+	}
 }
