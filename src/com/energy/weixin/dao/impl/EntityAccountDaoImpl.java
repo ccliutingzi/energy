@@ -1,5 +1,7 @@
 package com.energy.weixin.dao.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,10 @@ public class EntityAccountDaoImpl implements IEntityAccountDao {
 	 * 添加实体-账户信息
 	 */
 	private static final String ADDENTITYACCOUNT_SQL = "addEntityAccount";
+	/**
+	 * 添加实体-账户信息批量
+	 */
+	private static final String ADDENTITY_ACCOUNTBATCH_SQL = "addEntity_AccountBatch";
 	/**
 	 * 获取所有实体-账户信息
 	 */
@@ -64,6 +70,13 @@ public class EntityAccountDaoImpl implements IEntityAccountDao {
 	@Override
 	public void update(EntityAccount entityAccount) {
 		baseDao.update(UPDATE_SQL, entityAccount);
+	}
+
+	@Override
+	public void addEntityAccount(EntityAccount... entityAccount) {
+		List<EntityAccount> entityAccountList = new ArrayList<EntityAccount>();
+		entityAccountList.addAll(Arrays.asList(entityAccount));
+		baseDao.insert(ADDENTITY_ACCOUNTBATCH_SQL, entityAccountList);
 	}
 
 }

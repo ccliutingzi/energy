@@ -21,6 +21,15 @@
 		VALUES (#{entityId},#{entityType},#{accountId},#{accoutType},#{personType},#{dealResult},#{targetDate},#{remark})
 	</insert>
 
+	<insert id="addEntity_AccountBatch" parameterType="java.util.List">
+		INSERT INTO entity_account_table
+		(EntityID,EntityType,AccountID,AccoutType,PersonType,DealResult,TargetDate,Remark)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.entityId},#{item.entityType},#{item.accountId},#{item.accoutType},#{item.personType},#{item.dealResult},#{item.targetDate},#{item.remark})
+		</foreach>
+	</insert>
+
 	<select id="getAllEntity_Account" resultMap="result">
 		SELECT * FROM entity_account_table;
 	</select>
