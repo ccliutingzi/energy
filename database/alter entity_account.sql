@@ -1,0 +1,1 @@
+alter table entity_account_table add TargetDate date default null comment '目标日期字段，用于签到' after Remark;
