@@ -11,13 +11,14 @@
 		<result property="accoutType" column="AccoutType" />
 		<result property="personType" column="PersonType" />
 		<result property="dealResult" column="DealResult" />
+		<result property="targetDate" column="TargetDate" />
 		<result property="remark" column="Remark" />
 	</resultMap>
 
 	<insert id="addEntity_Account" parameterType="Entity_Account">
 		INSERT INTO entity_account_table
-		(EntityID,EntityType,AccountID,AccoutType,PersonType,DealResult,Remark)
-		VALUES (#{entityId},#{entityType},#{accountId},#{accoutType},#{personType},#{dealResult},#{remark})
+		(EntityID,EntityType,AccountID,AccoutType,PersonType,DealResult,TargetDate,Remark)
+		VALUES (#{entityId},#{entityType},#{accountId},#{accoutType},#{personType},#{dealResult},#{targetDate},#{remark})
 	</insert>
 
 	<select id="getAllEntity_Account" resultMap="result">
@@ -41,6 +42,7 @@
 			<if test="accoutType != null ">AccoutType = #{accoutType},</if>
 			<if test="personType != null ">PersonType = #{personType},</if>
 			<if test="dealResult != null ">DealResult = #{dealResult},</if>
+			<if test="targetDate != null ">TargetDate = #{targetDate},</if>
 			<if test="remark != null ">Remark = #{remark}</if>
 		</set>
 		WHERE EntityID = #{entityId};

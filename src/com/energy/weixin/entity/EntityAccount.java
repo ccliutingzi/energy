@@ -1,6 +1,7 @@
 package com.energy.weixin.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.energy.weixin.enums.AccountType;
 import com.energy.weixin.enums.EntityType;
@@ -42,6 +43,10 @@ public class EntityAccount implements Serializable {
 	 */
 	private String dealResult;
 	/*
+	 * 目标日期，用于签到
+	 */
+	private Date targetDate;
+	/*
 	 * 备注/拒绝原因
 	 */
 	private String remark;
@@ -51,7 +56,7 @@ public class EntityAccount implements Serializable {
 	
 	public EntityAccount(String entityID, EntityType entityType, String accountID,
 			AccountType accountType, PersonType personType, String dealResult,
-			String remark) {
+			Date targetDate, String remark) {
 		super();
 		this.entityID = entityID;
 		this.entityType = entityType;
@@ -59,6 +64,7 @@ public class EntityAccount implements Serializable {
 		this.accountType = accountType;
 		this.personType = personType;
 		this.dealResult = dealResult;
+		this.targetDate = targetDate;
 		this.remark = remark;
 	}
 
@@ -97,6 +103,12 @@ public class EntityAccount implements Serializable {
 	}
 	public void setDealResult(String dealResult) {
 		this.dealResult = dealResult;
+	}
+	public Date getTargetDate() {
+		return targetDate;
+	}
+	public void setTargetDate(Date targetDate) {
+		this.targetDate = targetDate;
 	}
 	public String getRemark() {
 		return remark;
