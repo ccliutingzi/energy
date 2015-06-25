@@ -4,9 +4,11 @@
 package com.energy.weixin.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.energy.weixin.dao.IAbsentDao;
 import com.energy.weixin.entity.Absent;
@@ -50,5 +52,13 @@ public class AbsentServiceImpl implements IAbsentService {
 	@Override
 	public void update(Absent absent) {
 		absentDao.update(absent);
+	}
+
+	@Override
+	public void doApply(Map<String, Object> params) {
+
+		//获取请假信息
+		//String absentInfo = Strin params.get("absentInfo");
+		//获取审核人,抄送人
 	}
 }

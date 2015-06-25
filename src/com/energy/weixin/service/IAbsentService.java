@@ -4,6 +4,7 @@
 package com.energy.weixin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.energy.weixin.entity.Absent;
 
@@ -14,6 +15,12 @@ import com.energy.weixin.entity.Absent;
  * 2015年6月24日
  */
 public interface IAbsentService {
+	
+	/**
+	 * 请假服务
+	 * @param params
+	 */
+	public void doApply(Map<String,Object> params);
 
 	public void addAbsent(Absent absent);
 
