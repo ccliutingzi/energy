@@ -3,16 +3,11 @@ package com.energy.weixin.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.energy.weixin.enums.AbsentType;
-import com.energy.weixin.enums.Status;
-import com.energy.weixin.utils.CommonUtil;
-
-/** 
- * @ClassName: Absent 
+/**
+ * @ClassName: Absent
  * @Description: 请假类
- * @author CCLIU 
- * @date 2015-6-11 上午11:05:22 
- * v1.0
+ * @author CCLIU
+ * @date 2015-6-11 上午11:05:22 v1.0
  */
 public class Absent implements Serializable {
 
@@ -33,7 +28,7 @@ public class Absent implements Serializable {
 	/*
 	 * 请假类型，取值范围：0-事假、1-病假、2-丧假、3-产假、4-特殊休假、5-其他
 	 */
-	private AbsentType absentType;
+	private String absentType;
 	/*
 	 * 请假说明
 	 */
@@ -61,15 +56,13 @@ public class Absent implements Serializable {
 	/*
 	 * 当前状态，1-待审核，2-审核中，3-已审核
 	 */
-	private Status status;
-	
-	public Absent(){
-		this.id = CommonUtil.GeneGUID();
+	private String status;
+
+	public Absent() {
 	}
-	
-	public Absent(String id, String userId, String userName, AbsentType absentType, String reason,
-			String position, String department, Date beginTime, Date endTime,
-			Date createTime, Status status) {
+
+	public Absent(String id, String userId, String userName, String absentType, String reason, String position,
+			String department, Date beginTime, Date endTime, Date createTime, String status) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -108,11 +101,11 @@ public class Absent implements Serializable {
 		this.userName = userName;
 	}
 
-	public AbsentType getAbsentType() {
+	public String getAbsentType() {
 		return absentType;
 	}
 
-	public void setAbsentType(AbsentType absentType) {
+	public void setAbsentType(String absentType) {
 		this.absentType = absentType;
 	}
 
@@ -164,11 +157,11 @@ public class Absent implements Serializable {
 		this.createTime = createTime;
 	}
 
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

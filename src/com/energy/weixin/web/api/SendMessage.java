@@ -43,7 +43,6 @@ public class SendMessage {
 	public Map<String, Object> sendText(Map<String, Object> message) throws Exception {
 
 		message.put("msgtype", MessageType.text);
-		message.put("agentid", "");
 		return HttpsUtil.post(SEND_MESSAGE_URL, JSONObject.toJSONString(message));
 	}
 

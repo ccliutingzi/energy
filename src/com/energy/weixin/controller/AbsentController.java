@@ -1,6 +1,8 @@
 package com.energy.weixin.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.energy.weixin.entity.Absent;
+import com.energy.weixin.enums.AbsentType;
 import com.energy.weixin.service.IAbsentService;
+import com.energy.weixin.utils.StringUtil;
 import com.energy.weixin.web.model.ResponseResult;
 
 /**
@@ -60,13 +65,31 @@ public class AbsentController extends AbstWebController {
 	@RequestMapping(value = "absentApply", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	Object absentApply(HttpServletRequest request) {
-		// 获取请假申请信息
-		Map<String, Object> requestParams = getRequestParams(request);
-		Absent absent = new Absent();
-		
-		absentService.addAbsent(absent);
 		// 响应数据
 		ResponseResult responseResult = new ResponseResult();
+		// 获取请假申请信息
+		Map<String, Object> requestParams = getRequestParams(request);
+		String jsonAbsentApplyInfo = StringUtil.getString(requestParams.get("absentApplyInfo"));
+		try {
+			Map<String, Object> testData = new HashMap<String, Object>();
+			testData.put("userId", "00001");
+			testData.put("userName", "tf");
+			testData.put("absentType", "0");
+			testData.put("reason", "最近想休息");
+			testData.put("position", "工程师");
+			testData.put("department", "互联网");
+			testData.put("beginTime", "2015-06-25 16:00");
+			testData.put("endTime", "2015-06-26 16:00");
+			testData.put("auditor", "00012");
+			List<String> userList = new ArrayList<String>();
+			userList.add("00011");
+			userList.add("00013");
+			testData.put("cc", userList);
+			absentService.doApply(JSONObject.toJSONString(testData));
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseResult.setStatus(1);
+		}
 		// 返回数据
 		return responseResult;
 	}
@@ -81,8 +104,6 @@ public class AbsentController extends AbstWebController {
 	public String page2(ModelMap model) {
 		model.addAttribute("myparam", "1");
 		Absent absent = new Absent();
-		absent.setUserName("ft");
-		absent.setUserId("1111");
 		absentService.addAbsent(absent);
 		return "mypage";
 	}
@@ -90,7 +111,7 @@ public class AbsentController extends AbstWebController {
 	@RequestMapping(value = "mypage1", method = RequestMethod.GET)
 	public @ResponseBody
 	Object page3(ModelMap model) {
-		Map<String,Object> resultData = new HashMap<String,Object>();
+		Map<String, Object> resultData = new HashMap<String, Object>();
 		resultData.put("a", "0");
 		resultData.put("b", "0");
 		resultData.put("c", "0");
