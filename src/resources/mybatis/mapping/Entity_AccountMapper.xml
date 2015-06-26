@@ -8,38 +8,111 @@
 		<result property="entityId" column="EntityID" />
 		<result property="entityType" column="EntityType" />
 		<result property="accountId" column="AccountID" />
-		<result property="accoutType" column="AccoutType" />
+		<result property="accountType" column="AccountType" />
 		<result property="personType" column="PersonType" />
 		<result property="dealResult" column="DealResult" />
-		<result property="targetDate" column="TargetDate" />
+		<result property="targetDate" column="TargetDate" jdbcType="TIMESTAMP"/>
+		<result property="updateDate" column="TargetDate" jdbcType="TIMESTAMP"/>
 		<result property="remark" column="Remark" />
 	</resultMap>
 
 	<insert id="addEntity_Account" parameterType="Entity_Account">
-		INSERT INTO entity_account_table
+		INSERT INTO
+		entity_account_table
 		(EntityID,EntityType,AccountID,AccountType,PersonType,DealResult,TargetDate,Remark)
-		VALUES (#{entityID},#{entityType},#{accountID},#{accountType},#{personType},#{dealResult},#{targetDate},#{remark})
+		VALUES
+		(#{entityID},#{entityType},#{accountID},#{accountType},#{personType},#{dealResult},#{targetDate},#{remark})
 	</insert>
 
 	<insert id="addEntity_AccountBatch" parameterType="java.util.List">
 		INSERT INTO entity_account_table
 		(EntityID,EntityType,AccountID,AccountType,PersonType,DealResult,TargetDate,Remark)
-		VALUES 
-		<foreach collection="list" item="item" index="index" separator=",">
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
 			(#{item.entityID},#{item.entityType},#{item.accountID},#{item.accountType},#{item.personType},#{item.dealResult},#{item.targetDate},#{item.remark})
 		</foreach>
 	</insert>
 
 	<select id="getAllEntity_Account" resultMap="result">
-		SELECT * FROM entity_account_table;
+		SELECT * FROM
+		entity_account_table;
 	</select>
 
-	<select id="getEntity_AccountById" parameterType="String" resultMap="result">
+	<select id="getEntity_AccountById" parameterType="String"
+		resultMap="result">
 		SELECT * FROM entity_account_table WHERE EntityID = #{id};
 	</select>
 
+	<!-- 条件sql -->
+	<sql id="selectEntityAccountByQueryCriteriaSql">
+		FROM entity_account_table tb
+		<where>
+			<if test="parameter.entityId != null">
+				EntityID = #{parameter.entityId}
+			</if>
+			<if test="parameter.entityType != null">
+				and EntityType = #{parameter.entityType}
+			</if>
+			<if test="parameter.accountId != null">
+				and AccountID = #{parameter.accountId}
+			</if>
+			<if test="parameter.accountType != null">
+				and AccountType = #{parameter.accountType}
+			</if>
+			<if test="parameter.personType != null">
+				and PersonType = #{parameter.personType}
+			</if>
+			<if test="parameter.dealResult != null">
+				and DealResult = #{parameter.dealResult}
+			</if>
+			<if test="parameter.targetDate != null">
+				and TargetDate = #{parameter.targetDate}
+			</if>
+			<if test="parameter.remark != null">
+				and Remark = #{parameter.remark}
+			</if>
+
+			<if test="keyValMap.targetDateBefore != null">
+				and TargetDate
+				&gt;=#{targetDateBefore,jdbcType=TIMESTAMP}
+			</if>
+			<if test="keyValMap.targetDateAfter != null">
+				and TargetDate &lt;=
+				#{targetDateAfter,jdbcType=TIMESTAMP}
+			</if>
+			
+			<if test="keyValMap.updateTimeBefore != null">
+				and UpdateTime
+				&gt;=#{updateTimeBefore,jdbcType=TIMESTAMP}
+			</if>
+			<if test="keyValMap.updateTimeAfter != null">
+				and UpdateTime &lt;=
+				#{updateTimeAfter,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</sql>
+
+
+	<!-- 分页查询数据 -->
+	<select id="queryEntityAccountByPage" parameterType="com.energy.weixin.entity.PageQueryParameter"
+		resultMap="result">
+		SELECT *
+		<include refid="selectEntityAccountByQueryCriteriaSql" />
+		<if test="orderBy != null">
+			${orderBy}
+		</if>
+	</select>
+	<!-- 查询总数 -->
+	<select id="queryEntityAccountCount" parameterType="com.energy.weixin.entity.PageQueryParameter"
+		resultType="long">
+		SELECT count(tb.EntityID)
+		<include refid="selectEntityAccountByQueryCriteriaSql" />
+	</select>
+
 	<delete id="deleteById" parameterType="string">
-		DELETE FROM entity_account_table WHERE EntityID = #{id};
+		DELETE FROM
+		entity_account_table WHERE EntityID = #{id};
 	</delete>
 
 	<update id="update" parameterType="Entity_Account">
@@ -48,7 +121,7 @@
 			<if test="entityId != null ">EntityID = #{entityID},</if>
 			<if test="entityType != null ">EntityType = #{entityType},</if>
 			<if test="accountId != null ">AccountID = #{accountID},</if>
-			<if test="accoutType != null ">AccoutType = #{accoutType},</if>
+			<if test="accountType != null ">AccountType = #{accountType},</if>
 			<if test="personType != null ">PersonType = #{personType},</if>
 			<if test="dealResult != null ">DealResult = #{dealResult},</if>
 			<if test="targetDate != null ">TargetDate = #{targetDate},</if>

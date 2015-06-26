@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.energy.weixin.entity.Absent;
+import com.energy.weixin.entity.EntityAccount;
 import com.energy.weixin.service.IAbsentService;
+import com.energy.weixin.service.IEntityAccountService;
 import com.energy.weixin.utils.StringUtil;
 import com.energy.weixin.web.model.ResponseResult;
 
@@ -33,6 +34,8 @@ public class AbsentController extends AbstWebController {
 
 	@Autowired
 	private IAbsentService absentService;
+	@Autowired
+	private IEntityAccountService entityAccountService;
 
 	/**
 	 * 请假应用入口页面
@@ -112,14 +115,24 @@ public class AbsentController extends AbstWebController {
 	@RequestMapping(value = "getAbsentRecord", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	Object getAbsentRecord(HttpServletRequest request) {
-		// 响应数据
-		ResponseResult responseResult = new ResponseResult();
 		// 获取请假申请信息
 		Map<String, Object> requestParams = getRequestParams(request);
-		int pageIndex = 1;
-		int pageSize = 15;
+		String spageIndex = StringUtil.getString(requestParams.get("pageIndex"));
+		String spageSize = StringUtil.getString(requestParams.get("pageSize"));
+		String status = StringUtil.getString(requestParams.get("status"));
+		int pageIndex = -1;
+		int pageSize = -1;
+		if (StringUtil.isNotEmpty(spageIndex)) {
+			pageIndex = Integer.valueOf(spageIndex);
+		}
+		if (StringUtil.isNotEmpty(spageSize)) {
+			pageSize = Integer.valueOf(spageSize);
+		}
 		Absent absent = new Absent();
-		return absentService.queryAbsentRecord(absent,pageIndex,pageSize);
+		if (StringUtil.isNotEmpty(status)) {
+			absent.setStatus(status);
+		}
+		return absentService.queryAbsentRecord(absent, pageIndex, pageSize);
 	}
 
 	/**
@@ -141,11 +154,23 @@ public class AbsentController extends AbstWebController {
 	@RequestMapping(value = "getAuditRecord", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	Object getAuditRecord(HttpServletRequest request) {
-		// 响应数据
-		ResponseResult responseResult = new ResponseResult();
 		// 获取请假申请信息
 		Map<String, Object> requestParams = getRequestParams(request);
-
-		return responseResult;
+		String spageIndex = StringUtil.getString(requestParams.get("pageIndex"));
+		String spageSize = StringUtil.getString(requestParams.get("pageSize"));
+		String dealResult = StringUtil.getString(requestParams.get("dealResult"));
+		int pageIndex = -1;
+		int pageSize = -1;
+		if (StringUtil.isNotEmpty(spageIndex)) {
+			pageIndex = Integer.valueOf(spageIndex);
+		}
+		if (StringUtil.isNotEmpty(spageSize)) {
+			pageSize = Integer.valueOf(spageSize);
+		}
+		EntityAccount entityAccount = new EntityAccount();
+		if (StringUtil.isNotEmpty(dealResult)) {
+			entityAccount.setDealResult(dealResult);
+		}
+		return entityAccountService.queryEntityAccountRecord(entityAccount, pageIndex, pageSize);
 	}
 }

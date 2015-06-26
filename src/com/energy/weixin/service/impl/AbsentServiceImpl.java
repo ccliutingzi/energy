@@ -100,8 +100,8 @@ public class AbsentServiceImpl implements IAbsentService {
 			// 获取审核人 抄送者
 			List<EntityAccount> entityAccountList = new ArrayList<EntityAccount>();
 			EntityAccount entityAccount = new EntityAccount();
-			entityAccount.setEntityID(absent.getId());
-			entityAccount.setAccountID(jsonAbsentApplyInfoObj.getString("auditor"));
+			entityAccount.setEntityId(absent.getId());
+			entityAccount.setAccountId(jsonAbsentApplyInfoObj.getString("auditor"));
 			entityAccount.setAccountType(AccountType.U.value());
 			entityAccount.setPersonType(PersonType.SH.value());
 			entityAccount.setDealResult("0");
@@ -111,8 +111,8 @@ public class AbsentServiceImpl implements IAbsentService {
 				JSONArray jsonCcs = jsonAbsentApplyInfoObj.getJSONArray("cc");
 				for (Object object : jsonCcs) {
 					entityAccount = new EntityAccount();
-					entityAccount.setEntityID(absent.getId());
-					entityAccount.setAccountID(StringUtil.getString(object));
+					entityAccount.setEntityId(absent.getId());
+					entityAccount.setAccountId(StringUtil.getString(object));
 					entityAccount.setAccountType(AccountType.U.value());
 					entityAccount.setPersonType(PersonType.CS.value());
 					entityAccount.setDealResult("0");
@@ -131,7 +131,7 @@ public class AbsentServiceImpl implements IAbsentService {
 					if (i >= 0) {
 						touser.append('|');
 					}
-					touser.append(entityAccountList.get(0).getAccountID());
+					touser.append(entityAccountList.get(0).getAccountId());
 				}
 				Map<String, Object> text = new HashMap<String, Object>();
 				text.put("content", "请审批谢谢!");

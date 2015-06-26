@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.energy.weixin.dao.IEntityAccountDao;
 import com.energy.weixin.entity.EntityAccount;
+import com.energy.weixin.entity.PageQueryParameter;
 import com.energy.weixin.service.IEntityAccountService;
+import com.energy.weixin.web.model.DataResult;
 
 /**
  * @author tf
@@ -46,6 +48,18 @@ public class EntityAccountServiceImpl implements IEntityAccountService {
 	@Override
 	public void update(EntityAccount entityAccount) {
 		entityAccountDao.update(entityAccount);
+	}
+
+	@Override
+	public DataResult<EntityAccount> queryEntityAccountRecord(EntityAccount entityAccount, int pageIndex, int pageSize) {
+		DataResult<EntityAccount> dataResult = new DataResult<EntityAccount>();
+		PageQueryParameter pageQueryParameter = new PageQueryParameter();
+		pageQueryParameter.setPageIndex(pageIndex);
+		pageQueryParameter.setPageSize(pageSize);
+		pageQueryParameter.setParameter(entityAccount);
+		dataResult.setDataList(entityAccountDao.queryEntityAccount(pageQueryParameter));
+		dataResult.setTotal((int) entityAccountDao.queryCount(pageQueryParameter));
+		return dataResult;
 	}
 
 }

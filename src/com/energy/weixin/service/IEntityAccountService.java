@@ -3,6 +3,7 @@ package com.energy.weixin.service;
 import java.util.List;
 
 import com.energy.weixin.entity.EntityAccount;
+import com.energy.weixin.web.model.DataResult;
 
 public interface IEntityAccountService {
 
@@ -16,4 +17,12 @@ public interface IEntityAccountService {
 
 	public void update(EntityAccount entityAccount);
 
+	/**
+	 * 分页查询
+	 * 
+	 * @param absent
+	 * @param pageIndex
+	 * @param pageSize
+	 */
+	public DataResult<EntityAccount> queryEntityAccountRecord(EntityAccount entityAccount, int pageIndex, int pageSize);
 }

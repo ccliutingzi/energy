@@ -4,8 +4,6 @@
 package com.energy.weixin.service;
 
 import java.util.List;
-import java.util.Map;
-
 import com.energy.weixin.entity.Absent;
 import com.energy.weixin.web.model.DataResult;
 
@@ -42,5 +40,5 @@ public interface IAbsentService {
 	 * @param pageIndex
 	 * @param pageSize
 	 */
-	public DataResult queryAbsentRecord(Absent absent, int pageIndex, int pageSize);
+	public DataResult<Absent> queryAbsentRecord(Absent absent, int pageIndex, int pageSize);
 }

@@ -122,7 +122,7 @@ public class PaginationInterceptor implements Interceptor {
 	 */
 	private String getOraclePageSql(PageQueryParameter page, StringBuffer sqlBuffer) {
 		// 计算第一条记录的位置，Oracle分页是通过rownum进行的，而rownum是从1开始的
-		int offset = (page.getPageIndex() - 1) * page.getPageSize() + 1;
+		int offset = (page.getPageIndex()) * page.getPageSize() + 1;
 		sqlBuffer.insert(0, "select u.*, rownum r from (").append(") u where rownum < ")
 				.append(offset + page.getPageSize());
 		sqlBuffer.insert(0, "select * from (").append(") where r >= ").append(offset);

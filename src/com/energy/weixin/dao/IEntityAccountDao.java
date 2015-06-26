@@ -3,6 +3,7 @@ package com.energy.weixin.dao;
 import java.util.List;
 
 import com.energy.weixin.entity.EntityAccount;
+import com.energy.weixin.entity.PageQueryParameter;
 
 public interface IEntityAccountDao {
 
@@ -18,4 +19,19 @@ public interface IEntityAccountDao {
 
 	public void update(EntityAccount entityAccount);
 
+	/**
+	 * 查询记录数
+	 * 
+	 * @param pageQueryParameter
+	 * @return
+	 */
+	public long queryCount(PageQueryParameter pageQueryParameter);
+
+	/**
+	 * 分页查询
+	 * 
+	 * @param pageQueryParameter
+	 * @return
+	 */
+	public List<EntityAccount> queryEntityAccount(PageQueryParameter pageQueryParameter);
 }

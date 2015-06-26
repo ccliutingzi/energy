@@ -16,7 +16,7 @@ public class EntityAccount implements Serializable {
 	/*
 	 * 实体ID
 	 */
-	private String entityID;
+	private String entityId;
 	/*
 	 * 实体类型，QD为签到，QJ为请假，BX为报销，SP为审批，HY为会议室预定，XM为项目管理
 	 */
@@ -24,7 +24,7 @@ public class EntityAccount implements Serializable {
 	/*
 	 * 账户ID
 	 */
-	private String accountID;
+	private String accountId;
 	/*
 	 * 账户类型，D为部门，T为标签，U为用户
 	 */
@@ -45,16 +45,20 @@ public class EntityAccount implements Serializable {
 	 * 备注/拒绝原因
 	 */
 	private String remark;
+	/*
+	 * 更新时间
+	 */
+	private Date updateTime;
 
 	public EntityAccount() {
 	}
 
-	public EntityAccount(String entityID, String entityType, String accountID, String accountType,
+	public EntityAccount(String entityId, String entityType, String accountId, String accountType,
 			String personType, String dealResult, Date targetDate, String remark) {
 		super();
-		this.entityID = entityID;
+		this.entityId = entityId;
 		this.entityType = entityType;
-		this.accountID = accountID;
+		this.accountId = accountId;
 		this.accountType = accountType;
 		this.personType = personType;
 		this.dealResult = dealResult;
@@ -62,12 +66,20 @@ public class EntityAccount implements Serializable {
 		this.remark = remark;
 	}
 
-	public String getEntityID() {
-		return entityID;
+	public String getEntityId() {
+		return entityId;
 	}
 
-	public void setEntityID(String entityID) {
-		this.entityID = entityID;
+	public void setEntityId(String entityId) {
+		this.entityId = entityId;
+	}
+
+	public String getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
 	}
 
 	public String getEntityType() {
@@ -78,13 +90,7 @@ public class EntityAccount implements Serializable {
 		this.entityType = entityType;
 	}
 
-	public String getAccountID() {
-		return accountID;
-	}
-
-	public void setAccountID(String accountID) {
-		this.accountID = accountID;
-	}
+	
 
 	public String getAccountType() {
 		return accountType;
@@ -124,6 +130,14 @@ public class EntityAccount implements Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 
 }

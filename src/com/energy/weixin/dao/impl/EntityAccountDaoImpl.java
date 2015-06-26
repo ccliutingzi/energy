@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.energy.weixin.dao.IEntityAccountDao;
 import com.energy.weixin.entity.EntityAccount;
+import com.energy.weixin.entity.PageQueryParameter;
 
 /**
  * 实体-账户DAO
@@ -47,6 +48,15 @@ public class EntityAccountDaoImpl implements IEntityAccountDao {
 	 */
 	private static final String UPDATE_SQL = "update";
 
+	/**
+	 * 分页查询
+	 */
+	private static final String QUERYENTITYACCOUNTBYPAGE_SQL = "queryEntityAccountByPage";
+	/**
+	 * 查询记录数
+	 */
+	private static final String QUERYENTITYACCOUNTCOUNT_SQL = "queryEntityAccountCount";
+
 	@Override
 	public void addEntityAccount(EntityAccount entityAccount) {
 		baseDao.insert(ADDENTITYACCOUNT_SQL, entityAccount);
@@ -77,6 +87,16 @@ public class EntityAccountDaoImpl implements IEntityAccountDao {
 		List<EntityAccount> entityAccountList = new ArrayList<EntityAccount>();
 		entityAccountList.addAll(Arrays.asList(entityAccount));
 		baseDao.insert(ADDENTITY_ACCOUNTBATCH_SQL, entityAccountList);
+	}
+
+	@Override
+	public long queryCount(PageQueryParameter pageQueryParameter) {
+		return baseDao.selectOne(QUERYENTITYACCOUNTCOUNT_SQL, pageQueryParameter);
+	}
+
+	@Override
+	public List<EntityAccount> queryEntityAccount(PageQueryParameter pageQueryParameter) {
+		return baseDao.selectList(QUERYENTITYACCOUNTBYPAGE_SQL, pageQueryParameter);
 	}
 
 }

@@ -12,9 +12,9 @@
 		<result property="reason" column="Reason" />
 		<result property="position" column="Position" />
 		<result property="department" column="Department" />
-		<result property="beginTime" column="BeginTime" />
-		<result property="endTime" column="EndTime" />
-		<result property="createTime" column="CreateTime" />
+		<result property="beginTime" column="BeginTime" jdbcType="TIMESTAMP" />
+		<result property="endTime" column="EndTime" jdbcType="TIMESTAMP" />
+		<result property="createTime" column="CreateTime" jdbcType="TIMESTAMP" />
 		<result property="status" column="Status" />
 	</resultMap>
 
@@ -60,13 +60,14 @@
 				and Department = #{parameter.department}
 			</if>
 			<if test="parameter.beginTime != null">
-				and BeginTime = #{parameter.beginTime}
+				and BeginTime = #{parameter.beginTime,jdbcType=TIMESTAMP}
 			</if>
 			<if test="parameter.endTime != null">
-				and EndTime = #{parameter.endTime}
+				and EndTime = #{parameter.endTime,jdbcType=TIMESTAMP}
 			</if>
 			<if test="parameter.createTime != null">
-				and CreateTime = #{parameter.createTime}
+				and CreateTime =
+				#{parameter.createTime,jdbcType=TIMESTAMP}
 			</if>
 			<if test="parameter.status != null">
 				and Status = #{parameter.status}
@@ -85,7 +86,8 @@
 		</if>
 	</select>
 	<!-- 查询总数 -->
-	<select id="queryAbsentCount" parameterType="com.energy.weixin.entity.PageQueryParameter" resultType="long">
+	<select id="queryAbsentCount" parameterType="com.energy.weixin.entity.PageQueryParameter"
+		resultType="long">
 		SELECT count(tb.id)
 		<include refid="selectAbsentByQueryCriteriaSql" />
 	</select>

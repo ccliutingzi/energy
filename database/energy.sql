@@ -75,6 +75,7 @@ CREATE TABLE `entity_account_table` (
   `AccountType` char(1) DEFAULT NULL,
   `PersonType` char(2) DEFAULT NULL,
   `DealResult` char(1) DEFAULT NULL,
+  'TargetDate' date default null,
   `Remark` varchar(200) DEFAULT NULL,
   `UpdateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   KEY `AccountID_index` (`AccountID`),
@@ -380,3 +381,15 @@ CREATE TABLE `sign_user_table` (
 -- ----------------------------
 -- Records of sign_user_table
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for system_status_table
+-- ----------------------------
+DROP TABLE IF EXISTS `system_status_table`;
+CREATE TABLE `system_status_table` (
+  `ID` int(11) NOT NULL COMMENT '唯一ID',
+  `Type` varchar(32) DEFAULT NULL COMMENT '类型',
+  `Status` varchar(10) DEFAULT NULL COMMENT '状态',
+  `Name` varchar(100) DEFAULT NULL COMMENT '状态名称',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统状态配置';
