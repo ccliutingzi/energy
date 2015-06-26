@@ -9,8 +9,9 @@ import java.util.List;
  * @author tf
  * 
  *         2015年6月25日
+ * @param <T>
  */
-public class DataResult {
+public class DataResult<T> {
 
 	/**
 	 * 总数
@@ -19,7 +20,7 @@ public class DataResult {
 	/**
 	 * 数据
 	 */
-	private List<Object> dataList = new ArrayList<Object>();
+	private List<T> dataList = new ArrayList<T>();
 
 	public int getTotal() {
 		return total;
@@ -29,11 +30,11 @@ public class DataResult {
 		this.total = total;
 	}
 
-	public List<Object> getDataList() {
+	public List<T> getDataList() {
 		return dataList;
 	}
 
-	public void setDataList(List<Object> dataList) {
+	public void setDataList(List<T> dataList) {
 		this.dataList = dataList;
 	}
 

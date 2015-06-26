@@ -53,10 +53,10 @@ public interface IAbsentDao {
 	/**
 	 * 查询记录数
 	 * 
-	 * @param absent
+	 * @param pageQueryParameter
 	 * @return
 	 */
-	public int queryCount(Absent absent);
+	public long queryCount(PageQueryParameter pageQueryParameter);
 
 	/**
 	 * 分页查询

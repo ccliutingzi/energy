@@ -81,13 +81,12 @@ public class AbsentDaoImpl extends BaseDao implements IAbsentDao {
 	}
 
 	@Override
-	public int queryCount(Absent absent) {
-		return baseDao.selectOne(QUERYABSENTBYPAGE_SQL, null);
+	public long queryCount(PageQueryParameter pageQueryParameter) {
+		return baseDao.selectOne(QUERYABSENTCOUNT_SQL, pageQueryParameter);
 	}
 
 	@Override
 	public List<Absent> queryAbsent(PageQueryParameter pageQueryParameter) {
-		return baseDao.selectOne(QUERYABSENTCOUNT_SQL, null);
+		return baseDao.selectList(QUERYABSENTBYPAGE_SQL, pageQueryParameter);
 	}
-
 }

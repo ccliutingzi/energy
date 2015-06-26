@@ -20,6 +20,7 @@ import com.energy.weixin.dao.IAbsentDao;
 import com.energy.weixin.dao.IEntityAccountDao;
 import com.energy.weixin.entity.Absent;
 import com.energy.weixin.entity.EntityAccount;
+import com.energy.weixin.entity.PageQueryParameter;
 import com.energy.weixin.enums.AccountType;
 import com.energy.weixin.enums.PersonType;
 import com.energy.weixin.service.IAbsentService;
@@ -28,6 +29,7 @@ import com.energy.weixin.utils.ConfigUtil;
 import com.energy.weixin.utils.DateUtil;
 import com.energy.weixin.utils.StringUtil;
 import com.energy.weixin.web.api.SendMessage;
+import com.energy.weixin.web.model.DataResult;
 
 /**
  * 请假服务
@@ -100,8 +102,8 @@ public class AbsentServiceImpl implements IAbsentService {
 			EntityAccount entityAccount = new EntityAccount();
 			entityAccount.setEntityID(absent.getId());
 			entityAccount.setAccountID(jsonAbsentApplyInfoObj.getString("auditor"));
-			entityAccount.setAccountType(AccountType.U);
-			entityAccount.setPersonType(PersonType.SH);
+			entityAccount.setAccountType(AccountType.U.value());
+			entityAccount.setPersonType(PersonType.SH.value());
 			entityAccount.setDealResult("0");
 			entityAccountList.add(entityAccount);
 			// 抄送者
@@ -111,8 +113,8 @@ public class AbsentServiceImpl implements IAbsentService {
 					entityAccount = new EntityAccount();
 					entityAccount.setEntityID(absent.getId());
 					entityAccount.setAccountID(StringUtil.getString(object));
-					entityAccount.setAccountType(AccountType.U);
-					entityAccount.setPersonType(PersonType.CS);
+					entityAccount.setAccountType(AccountType.U.value());
+					entityAccount.setPersonType(PersonType.CS.value());
 					entityAccount.setDealResult("0");
 					entityAccountList.add(entityAccount);
 				}
@@ -140,9 +142,20 @@ public class AbsentServiceImpl implements IAbsentService {
 				LOGGER.error("消息推送失败!", e);
 				e.printStackTrace();
 			}
-
 		} else {
 			LOGGER.warn("请假信息为空！");
 		}
+	}
+
+	@Override
+	public DataResult<Absent> queryAbsentRecord(Absent absent, int pageIndex, int pageSize) {
+		DataResult<Absent> dataResult = new DataResult<Absent>();
+		PageQueryParameter pageQueryParameter = new PageQueryParameter();
+		pageQueryParameter.setPageIndex(pageIndex);
+		pageQueryParameter.setPageSize(pageSize);
+		pageQueryParameter.setParameter(absent);
+		dataResult.setDataList(absentDao.queryAbsent(pageQueryParameter));
+		dataResult.setTotal((int)absentDao.queryCount(pageQueryParameter));
+		return dataResult;
 	}
 }

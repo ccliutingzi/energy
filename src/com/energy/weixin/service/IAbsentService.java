@@ -4,8 +4,10 @@
 package com.energy.weixin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.energy.weixin.entity.Absent;
+import com.energy.weixin.web.model.DataResult;
 
 /**
  * 请假服务类
@@ -33,4 +35,12 @@ public interface IAbsentService {
 	public void deleteById(String id);
 
 	public void update(Absent absent);
+
+	/**
+	 * 分页查询
+	 * @param absent
+	 * @param pageIndex
+	 * @param pageSize
+	 */
+	public DataResult queryAbsentRecord(Absent absent, int pageIndex, int pageSize);
 }

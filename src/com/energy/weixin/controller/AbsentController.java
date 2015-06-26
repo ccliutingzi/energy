@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.energy.weixin.entity.Absent;
-import com.energy.weixin.enums.AbsentType;
 import com.energy.weixin.service.IAbsentService;
 import com.energy.weixin.utils.StringUtil;
 import com.energy.weixin.web.model.ResponseResult;
@@ -94,28 +93,59 @@ public class AbsentController extends AbstWebController {
 		return responseResult;
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String page1(ModelMap model) {
-		model.addAttribute("", "");
-		return "hello";
+	/**
+	 * 请假记录
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "absentRecordView", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView absentRecordView() {
+		ModelAndView modelView = createModelAndView("absent_record");
+		return modelView;
 	}
 
-	@RequestMapping(value = "mypage", method = RequestMethod.GET)
-	public String page2(ModelMap model) {
-		model.addAttribute("myparam", "1");
-		Absent absent = new Absent();
-		absentService.addAbsent(absent);
-		return "mypage";
-	}
-
-	@RequestMapping(value = "mypage1", method = RequestMethod.GET)
+	/**
+	 * 获取请假记录
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "getAbsentRecord", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	Object page3(ModelMap model) {
-		Map<String, Object> resultData = new HashMap<String, Object>();
-		resultData.put("a", "0");
-		resultData.put("b", "0");
-		resultData.put("c", "0");
-		return resultData;
+	Object getAbsentRecord(HttpServletRequest request) {
+		// 响应数据
+		ResponseResult responseResult = new ResponseResult();
+		// 获取请假申请信息
+		Map<String, Object> requestParams = getRequestParams(request);
+		int pageIndex = 1;
+		int pageSize = 15;
+		Absent absent = new Absent();
+		return absentService.queryAbsentRecord(absent,pageIndex,pageSize);
 	}
 
+	/**
+	 * 审核记录
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "auditRecordView", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView auditRecordView() {
+		ModelAndView modelView = createModelAndView("audit_record");
+		return modelView;
+	}
+
+	/**
+	 * 获取审核记录
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "getAuditRecord", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	Object getAuditRecord(HttpServletRequest request) {
+		// 响应数据
+		ResponseResult responseResult = new ResponseResult();
+		// 获取请假申请信息
+		Map<String, Object> requestParams = getRequestParams(request);
+
+		return responseResult;
+	}
 }
