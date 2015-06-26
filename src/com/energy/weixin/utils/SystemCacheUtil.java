@@ -22,7 +22,7 @@ public class SystemCacheUtil {
 		defaultCache = new DefaultCache<Object>();
 	}
 
-	public SystemCacheUtil getInstance() {
+	public static SystemCacheUtil getInstance() {
 		if (null == instance) {
 			synchronized (SystemCacheUtil.class) {
 				if (null == instance) {
