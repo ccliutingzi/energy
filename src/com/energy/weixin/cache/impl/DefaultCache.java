@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import com.energy.weixin.cache.ICache;
 
 /**
+ * 默认缓存
  * @author tf
  * 
  *         2015年6月26日

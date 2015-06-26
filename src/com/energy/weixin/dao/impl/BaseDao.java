@@ -5,7 +5,9 @@ package com.energy.weixin.dao.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,6 +18,15 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings({ "unchecked" })
 @Repository
 public class BaseDao extends SqlSessionDaoSupport {
+
+	/**
+	 * 解决mybatis-spring从1.1升级到1.2所带来的dao层级的编写问题
+	 */
+	@Override
+	@Autowired
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
 
 	public <T> List<T> selectList(String sqlid, Object paramObj) {
 		return (List<T>) this.getSqlSession().selectList(sqlid, paramObj);

@@ -1,7 +1,7 @@
 package com.energy.weixin.web.model;
 
 /**
- * 响应
+ * 返回前端响应
  * 
  * @author tf
  * 

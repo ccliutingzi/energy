@@ -21,8 +21,9 @@
 	<insert id="addAbsent" parameterType="Absent">
 		INSERT INTO absent_table
 		(ID,UserID,UserName,AbsentType,Reason,Position,Department,BeginTime,EndTime,CreateTime,Status)
-		VALUES (#{id},#{userId},#{userName},#{absentType},#{reason},#{position},#{department},#{beginTime},
-		 #{endTime},#{createTime},#{status})
+		VALUES
+		(#{id},#{userId},#{userName},#{absentType},#{reason},#{position},#{department},#{beginTime},
+		#{endTime},#{createTime},#{status})
 	</insert>
 
 	<select id="getAllAbsent" resultMap="result">
@@ -33,8 +34,65 @@
 		SELECT * FROM absent_table WHERE ID = #{id};
 	</select>
 
+	<!-- 条件sql -->
+	<sql id="selectAbsentByQueryCriteriaSql">
+		FROM absent_table tb
+		<where>
+			<if test="parameter.id != null">
+				ID = #{parameter.id}
+			</if>
+			<if test="parameter.userId != null">
+				and UserID = #{parameter.userId}
+			</if>
+			<if test="parameter.userName != null">
+				and UserName = #{parameter.userName}
+			</if>
+			<if test="parameter.absentType != null">
+				and AbsentType = #{parameter.absentType}
+			</if>
+			<if test="parameter.reason != null">
+				and Reason = #{parameter.reason}
+			</if>
+			<if test="parameter.position != null">
+				and Position = #{parameter.position}
+			</if>
+			<if test="parameter.department != null">
+				and Department = #{parameter.department}
+			</if>
+			<if test="parameter.beginTime != null">
+				and BeginTime = #{parameter.beginTime}
+			</if>
+			<if test="parameter.endTime != null">
+				and EndTime = #{parameter.endTime}
+			</if>
+			<if test="parameter.createTime != null">
+				and CreateTime = #{parameter.createTime}
+			</if>
+			<if test="parameter.status != null">
+				and Status = #{parameter.status}
+			</if>
+		</where>
+	</sql>
+
+
+	<!-- 分页查询数据 -->
+	<select id="queryAbsentByPage" parameterType="com.energy.weixin.entity.PageQueryParameter"
+		resultMap="result">
+		SELECT *
+		<include refid="selectAbsentByQueryCriteriaSql" />
+		<if test="orderBy != null">
+			${orderBy}
+		</if>
+	</select>
+	<!-- 查询总数 -->
+	<select id="queryAbsentCount" parameterType="com.energy.weixin.entity.PageQueryParameter" resultType="long">
+		SELECT count(tb.id)
+		<include refid="selectAbsentByQueryCriteriaSql" />
+	</select>
+
 	<delete id="deleteById" parameterType="string">
-		DELETE FROM absent_table WHERE ID = #{id}
+		DELETE FROM absent_table
+		WHERE ID = #{id}
 	</delete>
 
 	<update id="update" parameterType="Absent">

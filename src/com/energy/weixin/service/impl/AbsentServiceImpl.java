@@ -20,6 +20,7 @@ import com.energy.weixin.dao.IAbsentDao;
 import com.energy.weixin.dao.IEntityAccountDao;
 import com.energy.weixin.entity.Absent;
 import com.energy.weixin.entity.EntityAccount;
+import com.energy.weixin.entity.PageQueryParameter;
 import com.energy.weixin.enums.AccountType;
 import com.energy.weixin.enums.PersonType;
 import com.energy.weixin.service.IAbsentService;
@@ -28,6 +29,7 @@ import com.energy.weixin.utils.ConfigUtil;
 import com.energy.weixin.utils.DateUtil;
 import com.energy.weixin.utils.StringUtil;
 import com.energy.weixin.web.api.SendMessage;
+import com.energy.weixin.web.model.DataResult;
 
 /**
  * 请假服务
@@ -143,5 +145,17 @@ public class AbsentServiceImpl implements IAbsentService {
 		} else {
 			LOGGER.warn("请假信息为空！");
 		}
+	}
+
+	@Override
+	public DataResult<Absent> queryAbsentRecord(Absent absent, int pageIndex, int pageSize) {
+		DataResult<Absent> dataResult = new DataResult<Absent>();
+		PageQueryParameter pageQueryParameter = new PageQueryParameter();
+		pageQueryParameter.setPageIndex(pageIndex);
+		pageQueryParameter.setPageSize(pageSize);
+		pageQueryParameter.setParameter(absent);
+		dataResult.setDataList(absentDao.queryAbsent(pageQueryParameter));
+		dataResult.setTotal((int)absentDao.queryCount(pageQueryParameter));
+		return dataResult;
 	}
 }

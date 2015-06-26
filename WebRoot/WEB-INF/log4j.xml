@@ -34,7 +34,7 @@
 		<level value="info" />
 		<appender-ref ref="console" />
 	</logger> -->
-	<logger name="org.apache.ibatis">
+	<logger name="java.sql.PreparedStatement">
 		<level value="info" />
 		<appender-ref ref="console" />
 	</logger>
