@@ -37,4 +37,7 @@ public enum Status {
 		return this.index;
 	}
 
+	public String value() {
+		return String.valueOf(index);
+	}
 }

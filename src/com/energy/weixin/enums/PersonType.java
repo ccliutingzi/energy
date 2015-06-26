@@ -10,7 +10,7 @@ public enum PersonType {
 	// SH为审核，CS为抄送，CW为财务
 	SH(0), CS(1), CW(2);
 	
-	private int index = 0;
+	private int index;
 
 	private PersonType(int index) {
 		this.index = index;
