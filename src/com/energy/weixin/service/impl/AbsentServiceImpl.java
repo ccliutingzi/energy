@@ -100,8 +100,8 @@ public class AbsentServiceImpl implements IAbsentService {
 			EntityAccount entityAccount = new EntityAccount();
 			entityAccount.setEntityID(absent.getId());
 			entityAccount.setAccountID(jsonAbsentApplyInfoObj.getString("auditor"));
-			entityAccount.setAccountType(AccountType.U);
-			entityAccount.setPersonType(PersonType.SH);
+			entityAccount.setAccountType(AccountType.U.value());
+			entityAccount.setPersonType(PersonType.SH.value());
 			entityAccount.setDealResult("0");
 			entityAccountList.add(entityAccount);
 			// 抄送者
@@ -111,8 +111,8 @@ public class AbsentServiceImpl implements IAbsentService {
 					entityAccount = new EntityAccount();
 					entityAccount.setEntityID(absent.getId());
 					entityAccount.setAccountID(StringUtil.getString(object));
-					entityAccount.setAccountType(AccountType.U);
-					entityAccount.setPersonType(PersonType.CS);
+					entityAccount.setAccountType(AccountType.U.value());
+					entityAccount.setPersonType(PersonType.CS.value());
 					entityAccount.setDealResult("0");
 					entityAccountList.add(entityAccount);
 				}
@@ -140,7 +140,6 @@ public class AbsentServiceImpl implements IAbsentService {
 				LOGGER.error("消息推送失败!", e);
 				e.printStackTrace();
 			}
-
 		} else {
 			LOGGER.warn("请假信息为空！");
 		}

@@ -17,16 +17,16 @@
 
 	<insert id="addEntity_Account" parameterType="Entity_Account">
 		INSERT INTO entity_account_table
-		(EntityID,EntityType,AccountID,AccoutType,PersonType,DealResult,TargetDate,Remark)
-		VALUES (#{entityId},#{entityType},#{accountId},#{accoutType},#{personType},#{dealResult},#{targetDate},#{remark})
+		(EntityID,EntityType,AccountID,AccountType,PersonType,DealResult,TargetDate,Remark)
+		VALUES (#{entityID},#{entityType},#{accountID},#{accountType},#{personType},#{dealResult},#{targetDate},#{remark})
 	</insert>
 
 	<insert id="addEntity_AccountBatch" parameterType="java.util.List">
 		INSERT INTO entity_account_table
-		(EntityID,EntityType,AccountID,AccoutType,PersonType,DealResult,TargetDate,Remark)
+		(EntityID,EntityType,AccountID,AccountType,PersonType,DealResult,TargetDate,Remark)
 		VALUES 
 		<foreach collection="list" item="item" index="index" separator=",">
-			(#{item.entityId},#{item.entityType},#{item.accountId},#{item.accoutType},#{item.personType},#{item.dealResult},#{item.targetDate},#{item.remark})
+			(#{item.entityID},#{item.entityType},#{item.accountID},#{item.accountType},#{item.personType},#{item.dealResult},#{item.targetDate},#{item.remark})
 		</foreach>
 	</insert>
 
@@ -35,19 +35,19 @@
 	</select>
 
 	<select id="getEntity_AccountById" parameterType="String" resultMap="result">
-		SELECT * FROM entity_account_table WHERE EntityID = #{entityId};
+		SELECT * FROM entity_account_table WHERE EntityID = #{id};
 	</select>
 
 	<delete id="deleteById" parameterType="string">
-		DELETE FROM entity_account_table WHERE EntityID = #{entityId};
+		DELETE FROM entity_account_table WHERE EntityID = #{id};
 	</delete>
 
 	<update id="update" parameterType="Entity_Account">
 		UPDATE entity_account_table
 		<set>
-			<if test="entityId != null ">EntityID = #{entityId},</if>
+			<if test="entityId != null ">EntityID = #{entityID},</if>
 			<if test="entityType != null ">EntityType = #{entityType},</if>
-			<if test="accountId != null ">AccountID = #{accountId},</if>
+			<if test="accountId != null ">AccountID = #{accountID},</if>
 			<if test="accoutType != null ">AccoutType = #{accoutType},</if>
 			<if test="personType != null ">PersonType = #{personType},</if>
 			<if test="dealResult != null ">DealResult = #{dealResult},</if>

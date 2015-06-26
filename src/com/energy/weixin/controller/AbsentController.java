@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.energy.weixin.entity.Absent;
-import com.energy.weixin.enums.AbsentType;
 import com.energy.weixin.service.IAbsentService;
 import com.energy.weixin.utils.StringUtil;
 import com.energy.weixin.web.model.ResponseResult;
