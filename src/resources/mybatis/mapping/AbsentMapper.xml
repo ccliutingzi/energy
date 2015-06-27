@@ -77,7 +77,7 @@
 
 
 	<!-- 分页查询数据 -->
-	<select id="queryAbsentByPage" parameterType="com.energy.weixin.entity.PageQueryParameter"
+	<select id="queryAbsentByPage" parameterType="com.energy.weixin.model.PageQueryParameter"
 		resultMap="result">
 		SELECT *
 		<include refid="selectAbsentByQueryCriteriaSql" />
@@ -86,7 +86,7 @@
 		</if>
 	</select>
 	<!-- 查询总数 -->
-	<select id="queryAbsentCount" parameterType="com.energy.weixin.entity.PageQueryParameter"
+	<select id="queryAbsentCount" parameterType="com.energy.weixin.model.PageQueryParameter"
 		resultType="long">
 		SELECT count(tb.id)
 		<include refid="selectAbsentByQueryCriteriaSql" />

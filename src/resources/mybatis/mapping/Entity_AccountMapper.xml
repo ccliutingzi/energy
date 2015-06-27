@@ -95,7 +95,7 @@
 
 
 	<!-- 分页查询数据 -->
-	<select id="queryEntityAccountByPage" parameterType="com.energy.weixin.entity.PageQueryParameter"
+	<select id="queryEntityAccountByPage" parameterType="com.energy.weixin.model.PageQueryParameter"
 		resultMap="result">
 		SELECT *
 		<include refid="selectEntityAccountByQueryCriteriaSql" />
@@ -104,7 +104,7 @@
 		</if>
 	</select>
 	<!-- 查询总数 -->
-	<select id="queryEntityAccountCount" parameterType="com.energy.weixin.entity.PageQueryParameter"
+	<select id="queryEntityAccountCount" parameterType="com.energy.weixin.model.PageQueryParameter"
 		resultType="long">
 		SELECT count(tb.EntityID)
 		<include refid="selectEntityAccountByQueryCriteriaSql" />
