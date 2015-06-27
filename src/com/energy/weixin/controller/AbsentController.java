@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
+import com.energy.weixin.constant.Constants;
 import com.energy.weixin.entity.Absent;
 import com.energy.weixin.entity.EntityAccount;
+import com.energy.weixin.entity.SystemStatus;
 import com.energy.weixin.service.IAbsentService;
 import com.energy.weixin.service.IEntityAccountService;
+import com.energy.weixin.service.ISystemStatusService;
 import com.energy.weixin.utils.StringUtil;
 import com.energy.weixin.web.model.ResponseResult;
 
@@ -36,6 +39,8 @@ public class AbsentController extends AbstWebController {
 	private IAbsentService absentService;
 	@Autowired
 	private IEntityAccountService entityAccountService;
+	@Autowired
+	private ISystemStatusService systemStatusService;
 
 	/**
 	 * 请假应用入口页面
@@ -172,5 +177,19 @@ public class AbsentController extends AbstWebController {
 			entityAccount.setDealResult(dealResult);
 		}
 		return entityAccountService.queryEntityAccountRecord(entityAccount, pageIndex, pageSize);
+	}
+
+	/**
+	 * 获取审核记录
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "getAbsentType", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	Object getAbsentType(HttpServletRequest request) {
+		// 获取请假申请信息
+		SystemStatus systemStatus = new SystemStatus();
+		systemStatus.setType(Constants.SYSTEM_ABSENT_TYPE);
+		return systemStatusService.getSystemStatus(systemStatus);
 	}
 }
