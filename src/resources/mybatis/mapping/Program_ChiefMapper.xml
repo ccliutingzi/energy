@@ -4,7 +4,7 @@
 
 <mapper namespace="com.energy.weixin.dao.IProgramChiefDao">
 
-	<resultMap id="result" type="Program_Chief">
+	<resultMap id="result" type="ProgramChief">
 		<result property="id" column="ID" />
 		<result property="programId" column="ProgramID" />
 		<result property="userId" column="UserID" />
@@ -12,7 +12,7 @@
 		<result property="type" column="Type" />
 	</resultMap>
 	
-	<insert id="addProgram_Chief" parameterType="Program_Chief">
+	<insert id="addProgram_Chief" parameterType="ProgramChief">
 		INSERT INTO program_chief_table
 		(ID,ProgramID,UserID,UserName,Type)
 		VALUES (#{id},#{programId},#{userId},#{userName},#{type})

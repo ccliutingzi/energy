@@ -4,7 +4,7 @@
 
 <mapper namespace="com.energy.weixin.dao.ISignUserDao">
 
-	<resultMap id="result" type="Sign_User">
+	<resultMap id="result" type="SignUser">
 		<result property="signId" column="SignID" />
 		<result property="userId" column="UserID" />
 		<result property="location" column="Location" />
@@ -13,7 +13,7 @@
 		<result property="remark" column="Remark" />
 	</resultMap>
 
-	<insert id="addSign_User" parameterType="Sign_User">
+	<insert id="addSign_User" parameterType="SignUser">
 		INSERT INTO sign_user_table
 		(SignID,UserID,Location,SignTime,AttendType,Remark)
 		VALUES (#{signId},#{userId},#{location},#{signTime},#{attendType},#{remark})
@@ -32,7 +32,7 @@
 		DELETE FROM sign_user_table WHERE SignID = #{signId};
 	</delete>
 
-	<update id="update" parameterType="Sign_User">
+	<update id="update" parameterType="SignUser">
 		UPDATE sign_user_table
 		<set>
 			<if test="userId != null ">UserID = #{userId},</if>

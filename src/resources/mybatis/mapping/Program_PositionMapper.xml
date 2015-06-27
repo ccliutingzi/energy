@@ -4,7 +4,7 @@
 
 <mapper namespace="com.energy.weixin.dao.IProgramPositionDao">
 
-	<resultMap id="result" type="Program_Position">
+	<resultMap id="result" type="ProgramPosition">
 		<result property="id" column="ID" />
 		<result property="programId" column="ProgramID" />
 		<result property="userId" column="UserID" />
@@ -14,7 +14,7 @@
 		<result property="type" column="Type" />
 	</resultMap>
 	
-	<insert id="addProgram_Position" parameterType="Program_Position">
+	<insert id="addProgram_Position" parameterType="ProgramPosition">
 		INSERT INTO program_position_table
 		(ID,ProgramID,UserID,UserNameID,Stage,Position,Type)
 		VALUES (#{id},#{programId},#{userId},#{userName},#{stage},#{position},#{type})

@@ -4,13 +4,13 @@
 
 <mapper namespace="com.energy.weixin.dao.IProgramEnsureDao">
 
-	<resultMap id="result" type="Program_Ensure">
+	<resultMap id="result" type="ProgramEnsure">
 		<result property="programId" column="ProgramID" />
 		<result property="userId" column="UserID" />
 		<result property="userName" column="UserName" />
 	</resultMap>
 	
-	<insert id="addProgram_Ensure" parameterType="Program_Ensure">
+	<insert id="addProgram_Ensure" parameterType="ProgramEnsure">
 		INSERT INTO program_ensure_table
 		(ProgramID,UserID,UserNameID)
 		VALUES (#{programId},#{userId},#{userName})

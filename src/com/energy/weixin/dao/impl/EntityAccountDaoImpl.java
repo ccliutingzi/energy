@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.energy.weixin.dao.IEntityAccountDao;
 import com.energy.weixin.entity.EntityAccount;
-import com.energy.weixin.entity.PageQueryParameter;
+import com.energy.weixin.model.PageQueryParameter;
 
 /**
  * 实体-账户DAO

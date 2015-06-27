@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.energy.weixin.dao.IEntityAccountDao;
 import com.energy.weixin.entity.EntityAccount;
-import com.energy.weixin.entity.PageQueryParameter;
+import com.energy.weixin.model.PageQueryParameter;
 import com.energy.weixin.service.IEntityAccountService;
 import com.energy.weixin.web.model.DataResult;
 

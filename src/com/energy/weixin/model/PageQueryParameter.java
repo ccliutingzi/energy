@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.energy.weixin.entity;
+package com.energy.weixin.model;
 
 import java.util.HashMap;
 import java.util.Map;

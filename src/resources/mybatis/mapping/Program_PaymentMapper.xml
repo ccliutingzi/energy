@@ -4,7 +4,7 @@
 
 <mapper namespace="com.energy.weixin.dao.IProgramPaymentDao">
 
-	<resultMap id="result" type="Program_Payment">
+	<resultMap id="result" type="ProgramPayment">
 		<result property="id" column="ID" />
 		<result property="programId" column="ProgramID" />
 		<result property="userId" column="UserID" />
@@ -14,7 +14,7 @@
 		<result property="remark" column="Remark" />
 	</resultMap>
 	
-	<insert id="addProgram_Payment" parameterType="Program_Payment">
+	<insert id="addProgram_Payment" parameterType="ProgramPayment">
 		INSERT INTO program_payment_table
 		(ID,ProgramID,UserID,UserNameID,Amount,InvoiceDate,Remark)
 		VALUES (#{id},#{programId},#{userId},#{userName},#{amount},#{invoiceDate},#{remark})

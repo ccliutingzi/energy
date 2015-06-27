@@ -3,7 +3,7 @@ package com.energy.weixin.dao;
 import java.util.List;
 
 import com.energy.weixin.entity.EntityAccount;
-import com.energy.weixin.entity.PageQueryParameter;
+import com.energy.weixin.model.PageQueryParameter;
 
 public interface IEntityAccountDao {
 

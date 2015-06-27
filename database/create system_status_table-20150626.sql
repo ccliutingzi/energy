@@ -8,9 +8,9 @@ CREATE TABLE `system_status_table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统状态配置';
 
 
------------------------
+-- ---------------------
 -- 初始化系统配置
------------------------
+-- ---------------------
 -- ----------------------------
 -- Records of system_status_table
 -- ----------------------------
@@ -52,7 +52,7 @@ INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('50004', 
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('50005', 'EntityType', '4', '会议室预定');
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('50006', 'EntityType', '5', '项目管理');
 
---人员类型
+-- 人员类型
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('60001', 'PersonType', '0', '审核');
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('60002', 'PersonType', '1', '抄送');
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('60003', 'PersonType', '2', '财务');
@@ -70,36 +70,39 @@ INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('70009', 
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('70010', 'Position', '9', '设计');
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('70011', 'Position', '10', '报物资人员');
 
---职务/岗位类型
+-- 职务/岗位类型
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('80001', 'PositionType', '0', '主设');
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('80002', 'PositionType', '1', '校核');
 
---项目性质
+-- 项目性质
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('90001', 'ProgramNature', '0', '系统');
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('90002', 'ProgramNature', '1', '业扩');
 
---项目所属阶段
+-- 项目所属阶段
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('11001', 'ProgramStage', '0', '可研');
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('11002', 'ProgramStage', '1', '初设');
-INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('11001', 'ProgramStage', '2', '施工图');
-INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('11002', 'ProgramStage', '3', '竣工图');
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('11003', 'ProgramStage', '2', '施工图');
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('11004', 'ProgramStage', '3', '竣工图');
 
---项目类型
+-- 项目类型
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('12001', 'ProgramType', '0', '配网');
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('12002', 'ProgramType', '1', '主网');
 
 
---签到类型
+-- 签到类型
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('13001', 'SignType', '0', '考勤签到');
 INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('13002', 'SignType', '1', '其他签到');
 
---状态枚举类
-INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('13001', 'Status', '0', '考勤签到');
-INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('13002', 'Status', '1', '其他签到');
-
-草稿(0), 待审核(1), 审核中(2), 已审核(3), 待报销(4), 已报销(5), 实施中(6), 结束确认中(7), 已结束(8);
-
-
+-- 状态枚举类
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('14001', 'Status', '0', '草稿');
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('14002', 'Status', '1', '待审核');
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('14003', 'Status', '2', '审核中');
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('14004', 'Status', '3', '已审核');
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('14005', 'Status', '4', '待报销');
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('14006', 'Status', '5', '已报销');
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('14007', 'Status', '6', '实施中');
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('14008', 'Status', '7', '结束确认中');
+INSERT INTO `system_status_table`(`ID`,`Type`,`Status`,`Name`) VALUES ('14009', 'Status', '8', '已结束');
 
 
 

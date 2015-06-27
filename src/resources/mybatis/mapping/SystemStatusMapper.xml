@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.energy.weixin.dao.ISystemStatusDao">
+
+	<resultMap id="result" type="SystemStatus">
+		<result property="id" column="ID" />
+		<result property="type" column="Type" />
+		<result property="status" column="Status" />
+		<result property="name" column="Name" />
+	</resultMap>
+
+	<insert id="addSystemStatus" parameterType="SystemStatus">
+		INSERT INTO
+		system_status_table
+		(ID,Type,Status,Name)
+		VALUES
+		(#{id},#{type},#{status},#{name})
+	</insert>
+
+	<select id="getSystemStatus" parameterType="SystemStatus"
+		resultMap="result">
+		SELECT * FROM system_status_table WHERE Type = #{type};
+		<where>
+			<if test="id != null">
+				ID = #{id}
+			</if>
+			<if test="type != null">
+				and Type = #{type}
+			</if>
+			<if test="name != null">
+				and Name = #{name}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM
+		system_status_table WHERE ID = #{id};
+	</delete>
+
+	<update id="update" parameterType="Sign">
+		UPDATE system_status_table
+		<set>
+			<if test="type != null ">Type = #{type},</if>
+			<if test="status != null ">Status = #{status},</if>
+			<if test="name != null ">Name = #{name},</if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+
+</mapper>

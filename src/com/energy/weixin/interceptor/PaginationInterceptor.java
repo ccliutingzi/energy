@@ -16,7 +16,7 @@ import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.plugin.Signature;
 import org.apache.log4j.Logger;
 
-import com.energy.weixin.entity.PageQueryParameter;
+import com.energy.weixin.model.PageQueryParameter;
 import com.energy.weixin.utils.ReflectUtil;
 
 /**

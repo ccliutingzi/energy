@@ -4,7 +4,7 @@
 
 <mapper namespace="com.energy.weixin.dao.IProgramFeedDao">
 
-	<resultMap id="result" type="Program_Feed">
+	<resultMap id="result" type="ProgramFeed">
 		<result property="id" column="ID" />
 		<result property="programId" column="ProgramID" />
 		<result property="userId" column="UserID" />
@@ -12,7 +12,7 @@
 		<result property="content" column="Content" />
 	</resultMap>
 	
-	<insert id="addProgram_Feed" parameterType="Program_Feed">
+	<insert id="addProgram_Feed" parameterType="ProgramFeed">
 		INSERT INTO program_feed_table
 		(ID,ProgramID,UserID,UserNameID,Content)
 		VALUES (#{id},#{programId},#{userId},#{userName},#{content})

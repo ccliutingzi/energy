@@ -4,12 +4,12 @@
 
 <mapper namespace="com.energy.weixin.dao.IEntityFileDao">
 
-	<resultMap id="result" type="Entity_File">
+	<resultMap id="result" type="EntityFile">
 		<result property="entityId" column="EntityID" />
 		<result property="fileId" column="FileID" />
 	</resultMap>
 
-	<insert id="addEntity_File" parameterType="Entity_File">
+	<insert id="addEntity_File" parameterType="EntityFile">
 		INSERT INTO entity_file_table
 		(EntityID,FileID) VALUES (#{entityId},#{fileId})
 	</insert>
@@ -26,7 +26,7 @@
 		DELETE FROM entity_file_table WHERE EntityID = #{entityId};
 	</delete>
 
-	<update id="update" parameterType="Entity_File">
+	<update id="update" parameterType="EntityFile">
 		UPDATE entity_file_table
 		<set>
 			<if test="entityId != null ">EntityID = #{entityId},</if>

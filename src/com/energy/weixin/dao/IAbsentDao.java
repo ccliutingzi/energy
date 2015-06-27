@@ -3,7 +3,7 @@ package com.energy.weixin.dao;
 import java.util.List;
 
 import com.energy.weixin.entity.Absent;
-import com.energy.weixin.entity.PageQueryParameter;
+import com.energy.weixin.model.PageQueryParameter;
 
 /**
  * 请假

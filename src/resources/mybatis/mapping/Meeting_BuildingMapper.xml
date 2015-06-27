@@ -4,12 +4,12 @@
 
 <mapper namespace="com.energy.weixin.dao.IMeetingBuildingDao">
 
-	<resultMap id="result" type="Meeting_Building">
+	<resultMap id="result" type="MeetingBuilding">
 		<result property="id" column="ID" />
 		<result property="buildingName" column="BuildingName" />
 	</resultMap>
 
-	<insert id="addMeeting_Building" parameterType="Meeting_Building">
+	<insert id="addMeeting_Building" parameterType="MeetingBuilding">
 		INSERT INTO meeting_building_table
 		(ID,BuildingName)
 		VALUES (#{id},#{buildingName})
@@ -27,7 +27,7 @@
 		DELETE FROM meeting_building_table WHERE ID = #{id}
 	</delete>
 
-	<update id="update" parameterType="Meeting_Building">
+	<update id="update" parameterType="MeetingBuilding">
 		UPDATE meeting_building_table
 		<set>
 			<if test="buildingName != null ">BuildingName = #{buildingName}</if>

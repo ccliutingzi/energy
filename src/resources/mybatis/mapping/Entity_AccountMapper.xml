@@ -4,7 +4,7 @@
 
 <mapper namespace="com.energy.weixin.dao.IEntityAccountDao">
 
-	<resultMap id="result" type="Entity_Account">
+	<resultMap id="result" type="EntityAccount">
 		<result property="entityId" column="EntityID" />
 		<result property="entityType" column="EntityType" />
 		<result property="accountId" column="AccountID" />
@@ -16,7 +16,7 @@
 		<result property="remark" column="Remark" />
 	</resultMap>
 
-	<insert id="addEntity_Account" parameterType="Entity_Account">
+	<insert id="addEntity_Account" parameterType="EntityAccount">
 		INSERT INTO
 		entity_account_table
 		(EntityID,EntityType,AccountID,AccountType,PersonType,DealResult,TargetDate,Remark)
@@ -115,7 +115,7 @@
 		entity_account_table WHERE EntityID = #{id};
 	</delete>
 
-	<update id="update" parameterType="Entity_Account">
+	<update id="update" parameterType="EntityAccount">
 		UPDATE entity_account_table
 		<set>
 			<if test="entityId != null ">EntityID = #{entityID},</if>

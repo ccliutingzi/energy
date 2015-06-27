@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.energy.weixin.dao.IAbsentDao;
 import com.energy.weixin.entity.Absent;
-import com.energy.weixin.entity.PageQueryParameter;
+import com.energy.weixin.model.PageQueryParameter;
 
 /**
  * 
@@ -19,7 +19,7 @@ import com.energy.weixin.entity.PageQueryParameter;
  *         2015年6月24日
  */
 @Service
-public class AbsentDaoImpl extends BaseDao implements IAbsentDao {
+public class AbsentDaoImpl implements IAbsentDao {
 
 	@Autowired
 	private BaseDao baseDao;

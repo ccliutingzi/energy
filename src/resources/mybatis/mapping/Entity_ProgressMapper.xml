@@ -4,12 +4,12 @@
 
 <mapper namespace="com.energy.weixin.dao.IEntityProgressDao">
 
-	<resultMap id="result" type="Entity_Progress">
+	<resultMap id="result" type="EntityProgress">
 		<result property="entityId" column="EntityID" />
 		<result property="content" column="Content" />
 	</resultMap>
 
-	<insert id="addEntity_Progress" parameterType="Entity_Progress">
+	<insert id="addEntity_Progress" parameterType="EntityProgress">
 		INSERT INTO entity_progress_table
 		(EntityID,Content) VALUES (#{entityId},#{content})
 	</insert>
@@ -26,7 +26,7 @@
 		DELETE FROM entity_progress_table WHERE EntityID = #{entityId};
 	</delete>
 
-	<update id="update" parameterType="Entity_Progress">
+	<update id="update" parameterType="EntityProgress">
 		UPDATE entity_progress_table
 		<set>
 			<if test="entityId != null ">EntityID = #{entityId},</if>
