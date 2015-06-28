@@ -16,91 +16,92 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.energy.weixin.constant.Constants;
-import com.energy.weixin.dao.IAbsentDao;
-import com.energy.weixin.dao.IEntityAccountDao;
-import com.energy.weixin.entity.Absent;
+import com.energy.weixin.dao.IExpenseDao;
 import com.energy.weixin.entity.EntityAccount;
+import com.energy.weixin.entity.Expense;
 import com.energy.weixin.enums.AccountType;
 import com.energy.weixin.enums.PersonType;
-import com.energy.weixin.model.PageQueryParameter;
-import com.energy.weixin.service.IAbsentService;
+import com.energy.weixin.service.IEntityAccountService;
+import com.energy.weixin.service.IExpenseService;
+import com.energy.weixin.service.IFileService;
 import com.energy.weixin.utils.CommonUtil;
 import com.energy.weixin.utils.ConfigUtil;
-import com.energy.weixin.utils.DateUtil;
 import com.energy.weixin.utils.StringUtil;
 import com.energy.weixin.web.api.SendMessage;
-import com.energy.weixin.web.model.DataResult;
 
 /**
- * 请假服务
- * 
  * @author tf
  * 
  *         2015年6月24日
  */
-@Service("absentService")
-public class AbsentServiceImpl implements IAbsentService {
+@Service("expenseService")
+public class ExpenseServiceImpl implements IExpenseService {
 
-	private static final Logger LOGGER = Logger.getLogger(AbsentServiceImpl.class);
+	private static final Logger LOGGER = Logger.getLogger(ExpenseServiceImpl.class);
 
 	/**
-	 * 请假
+	 * 报销dao
 	 */
 	@Autowired
-	private IAbsentDao absentDao;
+	private IExpenseDao expenseDao;
+
 	/**
-	 * 实体-账户
+	 * 实体-账户服务
 	 */
 	@Autowired
-	private IEntityAccountDao entityAccountDao;
+	private IEntityAccountService entityAccountService;
+
+	/**
+	 * 文件服务
+	 */
+	@Autowired
+	private IFileService fileService;
 
 	@Override
-	public void addAbsent(Absent absent) {
-		absentDao.addAbsent(absent);
+	public void addExpense(Expense expense) {
+		expenseDao.addExpense(expense);
 	}
 
 	@Override
-	public List<Absent> getAllAbsent() {
-		return absentDao.getAllAbsent();
+	public List<Expense> getAllExpense() {
+		return expenseDao.getAllExpense();
 	}
 
 	@Override
-	public Absent getAbsentById(String id) {
-		return absentDao.getAbsentById(id);
+	public Expense getExpenseById(String id) {
+		return expenseDao.getExpenseById(id);
 	}
 
 	@Override
 	public void deleteById(String id) {
-		absentDao.deleteById(id);
+		expenseDao.deleteById(id);
 	}
 
 	@Override
-	public void update(Absent absent) {
-		absentDao.update(absent);
+	public void update(Expense expense) {
+		expenseDao.update(expense);
 	}
 
 	@Override
-	public void doApply(String jsonAbsentApplyInfo) {
-
-		if (StringUtil.isNotEmpty(jsonAbsentApplyInfo)) {
-			JSONObject jsonAbsentApplyInfoObj = JSONObject.parseObject(jsonAbsentApplyInfo);
+	public void doApply(String expenseApplyInfo) {
+		if (StringUtil.isNotEmpty(expenseApplyInfo)) {
+			JSONObject jsonAbsentApplyInfoObj = JSONObject.parseObject(expenseApplyInfo);
 			// 获取请假信息
-			Absent absent = new Absent();
-			absent.setId(CommonUtil.GeneGUID());
-			absent.setUserId(jsonAbsentApplyInfoObj.getString("userId"));
-			absent.setUserName(jsonAbsentApplyInfoObj.getString("userName"));
-			absent.setAbsentType(jsonAbsentApplyInfoObj.getString("absentType"));
-			absent.setReason(jsonAbsentApplyInfoObj.getString("reason"));
-			absent.setPosition(jsonAbsentApplyInfoObj.getString("position"));
-			absent.setDepartment(jsonAbsentApplyInfoObj.getString("department"));
-			absent.setBeginTime(DateUtil.stringToDate(jsonAbsentApplyInfoObj.getString("beginTime")));
-			absent.setEndTime(DateUtil.stringToDate(jsonAbsentApplyInfoObj.getString("endTime")));
-			absent.setCreateTime(new Date());
-			absent.setStatus("0");
+			Expense expense = new Expense();
+			expense.setId(CommonUtil.GeneGUID());
+			expense.setUserId(jsonAbsentApplyInfoObj.getString("userId"));
+			expense.setUserName(jsonAbsentApplyInfoObj.getString("userName"));
+			expense.setTheme(jsonAbsentApplyInfoObj.getString("theme"));
+			expense.setReason(jsonAbsentApplyInfoObj.getString("reason"));
+			expense.setAmount(Float.valueOf(jsonAbsentApplyInfoObj.getString("amount")));
+			expense.setAnnexCount(Integer.valueOf(jsonAbsentApplyInfoObj.getString("annexCount")));
+			expense.setDepartment(jsonAbsentApplyInfoObj.getString("department"));
+			expense.setCreateTime(new Date());
+			expense.setStatus("1");
 			// 获取审核人 抄送者
 			List<EntityAccount> entityAccountList = new ArrayList<EntityAccount>();
 			EntityAccount entityAccount = new EntityAccount();
-			entityAccount.setEntityId(absent.getId());
+			entityAccount.setEntityId(expense.getId());
 			entityAccount.setAccountId(jsonAbsentApplyInfoObj.getString("auditor"));
 			entityAccount.setAccountType(AccountType.U.value());
 			entityAccount.setPersonType(PersonType.SH.value());
@@ -111,7 +112,7 @@ public class AbsentServiceImpl implements IAbsentService {
 				JSONArray jsonCcs = jsonAbsentApplyInfoObj.getJSONArray("cc");
 				for (Object object : jsonCcs) {
 					entityAccount = new EntityAccount();
-					entityAccount.setEntityId(absent.getId());
+					entityAccount.setEntityId(expense.getId());
 					entityAccount.setAccountId(StringUtil.getString(object));
 					entityAccount.setAccountType(AccountType.U.value());
 					entityAccount.setPersonType(PersonType.CS.value());
@@ -120,9 +121,11 @@ public class AbsentServiceImpl implements IAbsentService {
 				}
 			}
 			// 添加请假信息
-			absentDao.addAbsent(absent);
+			expenseDao.addExpense(expense);
+			// 附件信息
+			//fileService.addFile();
 			// 审核人 抄送人
-			entityAccountDao.addEntityAccount(entityAccountList.toArray(new EntityAccount[] {}));
+			entityAccountService.addEntityAccount(entityAccountList.toArray(new EntityAccount[] {}));
 			// 发送消息通知
 			Map<String, Object> message = new HashMap<String, Object>();
 			try {
@@ -147,15 +150,4 @@ public class AbsentServiceImpl implements IAbsentService {
 		}
 	}
 
-	@Override
-	public DataResult<Absent> queryAbsentRecord(Absent absent, int pageIndex, int pageSize) {
-		DataResult<Absent> dataResult = new DataResult<Absent>();
-		PageQueryParameter pageQueryParameter = new PageQueryParameter();
-		pageQueryParameter.setPageIndex(pageIndex);
-		pageQueryParameter.setPageSize(pageSize);
-		pageQueryParameter.setParameter(absent);
-		dataResult.setDataList(absentDao.queryAbsent(pageQueryParameter));
-		dataResult.setTotal((int) absentDao.queryCount(pageQueryParameter));
-		return dataResult;
-	}
 }

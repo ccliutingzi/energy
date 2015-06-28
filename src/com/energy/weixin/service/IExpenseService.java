@@ -16,4 +16,12 @@ public interface IExpenseService {
 
 	public void update(Expense expense);
 
+	/**
+	 * 报销申请
+	 * 
+	 * @param params
+	 *            expenseApplyInfo json数据信息{expenseInfo:'',auditor:'',cc:[]}
+	 */
+	public void doApply(String expenseApplyInfo);
+
 }

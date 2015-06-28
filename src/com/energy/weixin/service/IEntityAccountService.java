@@ -25,4 +25,10 @@ public interface IEntityAccountService {
 	 * @param pageSize
 	 */
 	public DataResult<EntityAccount> queryEntityAccountRecord(EntityAccount entityAccount, int pageIndex, int pageSize);
+
+	/**
+	 * 添加实体信息
+	 * @param entityAccount
+	 */
+	public void addEntityAccount(EntityAccount... entityAccount);
 }

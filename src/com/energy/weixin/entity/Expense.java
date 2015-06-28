@@ -55,7 +55,7 @@ public class Expense implements Serializable {
 	/*
 	 * 当前状态，1-待审核，2-审核中，3-已审核，4-待报销，5-已报销
 	 */
-	private Status status;
+	private String status;
 	
 	public Expense() {
 		super();
@@ -63,7 +63,7 @@ public class Expense implements Serializable {
 
 	public Expense(String id, String userId, String userName, String theme,
 			String department, String reason, float amount, int annexCount,
-			Date createTime, Status status) {
+			Date createTime, String status) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -149,11 +149,11 @@ public class Expense implements Serializable {
 		this.createTime = createTime;
 	}
 
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

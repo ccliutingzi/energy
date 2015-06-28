@@ -5,6 +5,7 @@ package com.energy.weixin.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +47,11 @@ public class FileServiceImpl implements IFileService {
 	@Override
 	public void update(File file) {
 		fileDao.update(file);
+	}
+
+	@Override
+	public void addFile(List<FileItem> fileltems) {
+		//fileltems.get(0).g
 	}
 
 }

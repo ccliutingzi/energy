@@ -62,4 +62,9 @@ public class EntityAccountServiceImpl implements IEntityAccountService {
 		return dataResult;
 	}
 
+	@Override
+	public void addEntityAccount(EntityAccount... entityAccount) {
+		entityAccountDao.addEntityAccount(entityAccount);
+	}
+
 }

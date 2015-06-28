@@ -45,6 +45,7 @@ public abstract class AbstWebController {
 				for (FileItem item : fileItems) {
 					requestParams.put(item.getFieldName(), item);
 				}
+				requestParams.put("fileItems", fileItems);
 			} else {
 				// 获取parmeter中参数
 				enumeration = request.getParameterNames();
