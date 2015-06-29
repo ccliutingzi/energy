@@ -18,6 +18,22 @@ public interface Constants {
 	 * 系统相关配置
 	 */
 	String ENERGY_CONFIG_PATH = "resources\\config\\energy_config.properties";
+
+	/**
+	 * 附件存储路径
+	 */
+	String ACCESSORY_STORAGE_PATH = "accessory_storage_path";
+
+	/**
+	 * 文件目录名称
+	 */
+	String FILE_DIR = "resource_dir";
+
+	/**
+	 * 图片缩放目录名称
+	 */
+	String ZOOM_DIR = "imageZoom";
+
 	/****************************** 系统类型 **************************************/
 
 	/**

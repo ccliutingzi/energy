@@ -23,6 +23,6 @@ public interface IAccessoryService {
 	 * 
 	 * @param fileltems
 	 */
-	public void addFile(List<FileItem> fileltems);
+	public void addAccessory(List<FileItem> fileltems);
 
 }

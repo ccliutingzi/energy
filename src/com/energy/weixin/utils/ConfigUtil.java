@@ -45,6 +45,25 @@ public class ConfigUtil {
 	}
 
 	/**
+	 * 获取内容
+	 * 
+	 * @param configFile
+	 * @param property
+	 * @return
+	 */
+	public static String get(String configFile, String property, String defaultValue) {
+		if (!configMap.containsKey(configFile)) {
+			instance.initConfig(configFile);
+		}
+		PropertiesConfiguration config = configMap.get(configFile);
+		if (null != config) {
+			return configMap.get(configFile).getString(property);
+		} else {
+			return defaultValue;
+		}
+	}
+
+	/**
 	 * 载入配置文件，初始化后加入map
 	 * 
 	 * @param configFile
