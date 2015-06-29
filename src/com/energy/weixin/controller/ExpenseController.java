@@ -1,19 +1,24 @@
 package com.energy.weixin.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
+import com.energy.weixin.entity.Accessory;
 import com.energy.weixin.service.IExpenseService;
 import com.energy.weixin.utils.StringUtil;
 import com.energy.weixin.web.model.ResponseResult;
@@ -65,8 +70,15 @@ public class ExpenseController extends AbstWebController {
 		// 获取请假申请信息
 		Map<String, Object> requestParams = getRequestParams(request);
 		String jsonAbsentApplyInfo = StringUtil.getString(requestParams.get("expenseApplyInfo"));
-		Map<String,Object> testData = new HashMap<String,Object>();
-		expenseService.doApply(JSONObject.toJSONString(testData ));
+		List<FileItem> fileltems = (List<FileItem>) requestParams.get("fileltems");
+
+		List<Accessory> fileList = new ArrayList<Accessory>();
+		if (!CollectionUtils.isEmpty(fileltems)) {
+
+		}
+
+		Map<String, Object> testData = new HashMap<String, Object>();
+		expenseService.doApply(JSONObject.toJSONString(testData),fileltems);
 		return null;
 	}
 

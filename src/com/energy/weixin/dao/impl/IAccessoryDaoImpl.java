@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.energy.weixin.dao.IFileDao;
-import com.energy.weixin.entity.File;
+import com.energy.weixin.dao.IAccessoryDao;
+import com.energy.weixin.entity.Accessory;
 
 /**
  * 文件信息DAO
@@ -16,22 +16,22 @@ import com.energy.weixin.entity.File;
  *         2015年6月24日
  */
 @Service
-public class FileDaoImpl implements IFileDao {
+public class IAccessoryDaoImpl implements IAccessoryDao {
 	@Autowired
 	private BaseDao baseDao;
 
 	/**
 	 * 添加文件信息
 	 */
-	private static final String ADDFILE_SQL = "addFile";
+	private static final String ADDFILE_SQL = "addAccessory";
 	/**
 	 * 获取所有文件信息
 	 */
-	private static final String GETALLFILE_SQL = "getAllFile";
+	private static final String GETALLFILE_SQL = "getAllAccessory";
 	/**
 	 * 根据id获取文件信息
 	 */
-	private static final String GETFILEBYID_SQL = "getFileById";
+	private static final String GETFILEBYID_SQL = "getAccessoryById";
 	/**
 	 * 根据id删除文件信息
 	 */
@@ -42,17 +42,17 @@ public class FileDaoImpl implements IFileDao {
 	private static final String UPDATE_SQL = "update";
 
 	@Override
-	public void addFile(File file) {
-		baseDao.insert(ADDFILE_SQL, file);
+	public void addAccessory(Accessory accessory) {
+		baseDao.insert(ADDFILE_SQL, accessory);
 	}
 
 	@Override
-	public List<File> getAllFile() {
+	public List<Accessory> getAllAccessory() {
 		return baseDao.selectList(GETALLFILE_SQL);
 	}
 
 	@Override
-	public File getFileById(String id) {
+	public Accessory getAccessoryById(String id) {
 		return baseDao.selectOne(GETFILEBYID_SQL, id);
 	}
 
@@ -62,8 +62,8 @@ public class FileDaoImpl implements IFileDao {
 	}
 
 	@Override
-	public void update(File file) {
-		baseDao.update(UPDATE_SQL, file);
+	public void update(Accessory accessory) {
+		baseDao.update(UPDATE_SQL, accessory);
 	}
 
 }

@@ -2,14 +2,15 @@ package com.energy.weixin.entity;
 
 import java.io.Serializable;
 
-/** 
- * @ClassName: File 
- * @Description: 文件类
- * @author CCLIU 
- * @date 2015-6-11 上午11:05:22 
- * v1.0
+/**
+ * 附件
+ * 
+ * @author tf
+ * 
+ * @date 2015年6月29日 上午10:00:59
+ * @version 1.0
  */
-public class File implements Serializable {
+public class Accessory implements Serializable {
 
 	private static final long serialVersionUID = 3647233284813657927L;
 
@@ -30,11 +31,11 @@ public class File implements Serializable {
 	 */
 	private String zoomPath;
 
-	public File() {
+	public Accessory() {
 		super();
 	}
-	
-	public File(String id, String fileName, String filePath, String zoomPath) {
+
+	public Accessory(String id, String fileName, String filePath, String zoomPath) {
 		super();
 		this.id = id;
 		this.fileName = fileName;
@@ -73,5 +74,5 @@ public class File implements Serializable {
 	public void setZoomPath(String zoomPath) {
 		this.zoomPath = zoomPath;
 	}
-	
+
 }

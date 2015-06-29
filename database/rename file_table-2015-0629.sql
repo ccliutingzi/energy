@@ -1,0 +1,1 @@
+rename table file_table to accessory_table

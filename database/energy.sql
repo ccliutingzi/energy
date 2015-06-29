@@ -141,8 +141,8 @@ CREATE TABLE `expense_table` (
 -- ----------------------------
 -- Table structure for file_table
 -- ----------------------------
-DROP TABLE IF EXISTS `file_table`;
-CREATE TABLE `file_table` (
+DROP TABLE IF EXISTS `accessory_table`;
+CREATE TABLE `accessory_table` (
   `ID` char(32) NOT NULL,
   `FileName` varchar(255) DEFAULT NULL,
   `FilePath` varchar(255) DEFAULT NULL,
