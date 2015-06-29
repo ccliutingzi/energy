@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.energy.weixin.constant.Constants;
 import com.energy.weixin.utils.ConfigUtil;
+import com.energy.weixin.utils.WeixinUtil;
 import com.energy.weixin.utils.wxutil.WXBizMsgCrypt;
 
 /** 
@@ -53,6 +55,25 @@ public class CommonController extends AbstWebController{
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 企业号应用验证
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="test", method = RequestMethod.GET)
+	public ModelAndView test(HttpServletRequest request, HttpServletResponse response) {
+		// 请求参数
+		Map<String, Object> params = getRequestParams(request);
+		String code = params.get("code").toString();
+		String state = params.get("state").toString();
+		try {
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ModelAndView("index");
 	}
 	
 }
