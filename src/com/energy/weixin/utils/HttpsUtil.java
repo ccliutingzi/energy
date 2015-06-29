@@ -74,6 +74,36 @@ public class HttpsUtil {
 						DEFAULT_CHARSET, DEFAULT_CONNECT_TIMEOUT,
 						DEFAULT_READ_TIMEOUT));
 	}
+	
+	/**
+	 * GET请求
+	 * 
+	 * @param url
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
+	public static JSONObject get(String url, JSONObject params) throws Exception {
+		return JSONObject
+				.parseObject(sendRequest(url, params.toJSONString(), METHOD_GET,
+						DEFAULT_CHARSET, DEFAULT_CONNECT_TIMEOUT,
+						DEFAULT_READ_TIMEOUT));
+	}
+	
+	/**
+	 * POST请求
+	 * 
+	 * @param url
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
+	public static JSONObject post(String url, JSONObject params) throws Exception {
+		return JSONObject
+				.parseObject(sendRequest(url, params.toJSONString(), METHOD_POST,
+						DEFAULT_CHARSET, DEFAULT_CONNECT_TIMEOUT,
+						DEFAULT_READ_TIMEOUT));
+	}
 
 	/**
 	 * 发送请求
