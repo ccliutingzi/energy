@@ -3,6 +3,7 @@ package com.energy.weixin.dao.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.energy.weixin.dao.ISystemStatusDao;
 import com.energy.weixin.entity.SystemStatus;
@@ -13,6 +14,7 @@ import com.energy.weixin.entity.SystemStatus;
  * 
  *         2015年6月27日 下午6:51:00
  */
+@Service
 public class SystemStatusDaoImpl implements ISystemStatusDao {
 
 	@Autowired
