@@ -4,33 +4,33 @@
 
 <mapper namespace="com.energy.weixin.dao.IFileDao">
 
-	<resultMap id="result" type="File">
+	<resultMap id="result" type="Accessory">
 		<result property="id" column="ID" />
 		<result property="fileName" column="FileName" />
 		<result property="filePath" column="FilePath" />
 		<result property="zoomPath" column="ZoomPath" />
 	</resultMap>
 
-	<insert id="addFile" parameterType="File">
-		INSERT INTO file_table
+	<insert id="addAccessory" parameterType="Accessory">
+		INSERT INTO accessory_table
 		(ID,FileName,FilePath,ZoomPath)
 		VALUES (#{id},#{fileName},#{filePath},#{zoomPath})
 	</insert>
 
-	<select id="getAllFile" resultMap="result">
-		SELECT * FROM file_table;
+	<select id="getAllAccessory" resultMap="result">
+		SELECT * FROM accessory_table;
 	</select>
 
-	<select id="getFileById" parameterType="String" resultMap="result">
-		SELECT * FROM file_table WHERE ID = #{id};
+	<select id="getAccessoryById" parameterType="String" resultMap="result">
+		SELECT * FROM accessory_table WHERE ID = #{id};
 	</select>
 
 	<delete id="deleteById" parameterType="string">
-		DELETE FROM file_table WHERE ID = #{id}
+		DELETE FROM accessory_table WHERE ID = #{id}
 	</delete>
 
-	<update id="update" parameterType="File">
-		UPDATE file_table
+	<update id="update" parameterType="Accessory">
+		UPDATE accessory_table
 		<set>
 			<if test="fileName != null ">FileName = #{fileName},</if>
 			<if test="filePath != null ">FilePath = #{filePath},</if>

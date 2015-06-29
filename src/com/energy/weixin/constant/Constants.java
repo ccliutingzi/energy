@@ -14,6 +14,10 @@ public interface Constants {
 	 * 微信相关配置
 	 */
 	String WEIXIN_APP_PATH = "resources\\config\\weixin_app.properties";
+	/**
+	 * 系统相关配置
+	 */
+	String ENERGY_CONFIG_PATH = "resources\\config\\energy_config.properties";
 	/****************************** 系统类型 **************************************/
 
 	/**

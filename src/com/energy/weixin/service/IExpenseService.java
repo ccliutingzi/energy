@@ -2,7 +2,10 @@ package com.energy.weixin.service;
 
 import java.util.List;
 
+import org.apache.commons.fileupload.FileItem;
+
 import com.energy.weixin.entity.Expense;
+import com.energy.weixin.entity.Accessory;
 
 public interface IExpenseService {
 
@@ -21,7 +24,8 @@ public interface IExpenseService {
 	 * 
 	 * @param params
 	 *            expenseApplyInfo json数据信息{expenseInfo:'',auditor:'',cc:[]}
+	 * @param fileltems 附件信息
 	 */
-	public void doApply(String expenseApplyInfo);
+	public void doApply(String expenseApplyInfo, List<FileItem> fileltems);
 
 }

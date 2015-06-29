@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.fileupload.FileItem;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +22,9 @@ import com.energy.weixin.entity.EntityAccount;
 import com.energy.weixin.entity.Expense;
 import com.energy.weixin.enums.AccountType;
 import com.energy.weixin.enums.PersonType;
+import com.energy.weixin.service.IAccessoryService;
 import com.energy.weixin.service.IEntityAccountService;
 import com.energy.weixin.service.IExpenseService;
-import com.energy.weixin.service.IFileService;
 import com.energy.weixin.utils.CommonUtil;
 import com.energy.weixin.utils.ConfigUtil;
 import com.energy.weixin.utils.StringUtil;
@@ -55,7 +56,7 @@ public class ExpenseServiceImpl implements IExpenseService {
 	 * 文件服务
 	 */
 	@Autowired
-	private IFileService fileService;
+	private IAccessoryService accessoryService;
 
 	@Override
 	public void addExpense(Expense expense) {
@@ -83,7 +84,7 @@ public class ExpenseServiceImpl implements IExpenseService {
 	}
 
 	@Override
-	public void doApply(String expenseApplyInfo) {
+	public void doApply(String expenseApplyInfo, List<FileItem> fileltems) {
 		if (StringUtil.isNotEmpty(expenseApplyInfo)) {
 			JSONObject jsonAbsentApplyInfoObj = JSONObject.parseObject(expenseApplyInfo);
 			// 获取请假信息
@@ -123,7 +124,7 @@ public class ExpenseServiceImpl implements IExpenseService {
 			// 添加请假信息
 			expenseDao.addExpense(expense);
 			// 附件信息
-			//fileService.addFile();
+			// fileService.addFile(fileltems);
 			// 审核人 抄送人
 			entityAccountService.addEntityAccount(entityAccountList.toArray(new EntityAccount[] {}));
 			// 发送消息通知
